@@ -10,5 +10,7 @@ pipelines:
             - maven # Cache any dependencies we download, speeds up build times.
           script:
             - bash configure_maven.sh # Create our settings.xml file.  Will fail if environment variables aren't set properly.
+            - bash git submodule init
+            - bash git submodule update
             - mvn -B --file all-modules-build/pom.xml verify # Ensure all artifacts build successfully before we attempt deploy in order to prevent partial deploys.
             - mvn -B --file all-modules-build/pom.xml deploy # Now that all builds have completed, we can deploy all the artifacts.
