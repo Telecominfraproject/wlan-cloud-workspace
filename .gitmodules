@@ -1,0 +1,12 @@
+[submodule "tip-wlan-cloud-root"]
+	path = tip-wlan-cloud-root
+	url = ../tip-wlan-cloud-root
+[submodule "tip-wlan-cloud-base"]
+	path = tip-wlan-cloud-base
+	url = ../tip-wlan-cloud-base/
+[submodule "opensync-wifi-controller"]
+	path = opensync-wifi-controller
+	url = ../opensync-wifi-controller
+[submodule "opensync-wifi-controller-ext"]
+	path = opensync-wifi-controller-ext
+	url = ../opensync-wifi-controller-ext
