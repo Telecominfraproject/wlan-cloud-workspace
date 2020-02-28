@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        <modelVersion>4.0.0</modelVersion>
+        <groupId>com.telecominfraproject.wlan</groupId>
+        <artifactId>tip-wlan-cloud-workspace-all-modules-build</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+        <packaging>pom</packaging>
+        <description>Aggregation of all workspace modules - to build them in one shot.</description>
+
+        <profiles>
+                <profile>
+                        <id>full-build</id>
+                        <activation>
+                                <property>
+                                        <name>full-build</name>
+                                </property>
+                                <activeByDefault>true</activeByDefault>
+                        </activation>
+                        <modules>
+                                <module>../tip-wlan-cloud-root</module>
+                                <module>../tip-wlan-cloud-base/base-build</module>
+                                <module>../opensync-wifi-controller/opensync-gateway-build</module>
+                        </modules>
+                </profile>
+        </profiles>
+</project>
+
