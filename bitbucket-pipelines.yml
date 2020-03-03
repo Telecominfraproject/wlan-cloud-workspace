@@ -25,5 +25,5 @@ pipelines:
             - aws --version
             - echo "Deploying to Bitbucket Downloads"
             - echo "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads"
-            - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"opensync-wifi-controller/opensync-gateway-static-process/target/opensync-gateway-static-process-0.0.1-SNAPSHOT.jar"
+            - curl -X POST --user "${BB_AUTH_STRING}" "https://api.bitbucket.org/2.0/repositories/${BITBUCKET_REPO_OWNER}/${BITBUCKET_REPO_SLUG}/downloads" --form files=@"opensync-wifi-controller/opensync-gateway-static-process/target/opensync-gateway-static-process-0.0.1-SNAPSHOT.jar" -v 
 
