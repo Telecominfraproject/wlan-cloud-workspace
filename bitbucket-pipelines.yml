@@ -14,14 +14,13 @@ pipelines:
             - mvn -B --file all-modules-build/pom.xml verify # Ensure all artifacts build successfully before we attempt deploy in order to prevent partial deploys.
             - mvn -B --file all-modules-build/pom.xml deploy # Now that all builds have completed, we can deploy all the artifacts.
           artifacts: # This will carry across the files you want to deploy to all subsequent steps
-            - ~/build/files-to-deploy/*
-            
+            - opensync-wifi-controller/opensync-gateway-static-process/target/opensync-gateway-static-process-0.0.1-SNAPSHOT.jar
       - step:
           name: Deploy to Test
           image: aneitayang/aws-cli:1.0
           deployment: Test
           trigger: manual
           script:
-            - bash echo "Deploying to test ..."
+            - echo "Deploying to test ..."
             - aws --version
 
