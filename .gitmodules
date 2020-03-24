@@ -7,3 +7,6 @@
 [submodule "opensync-wifi-controller"]
 	path = opensync-wifi-controller
 	url = git@bitbucket.org:connectustechnologies/opensync-wifi-controller.git
+[submodule "tip-wlan-cloud-services"]
+	path = tip-wlan-cloud-services
+	url = git@bitbucket.org:connectustechnologies/tip-wlan-cloud-services.git
