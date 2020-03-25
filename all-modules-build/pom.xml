@@ -25,7 +25,7 @@
                                 <module>../tip-wlan-cloud-root</module>
                                 <module>../tip-wlan-cloud-base/base-build</module>
                                 <module>../tip-wlan-cloud-services/cloud-services-build</module>
-                                <module>../opensync-wifi-controller/opensync-gateway-build</module>
+                                <module>../tip-wlan-opensync-wifi-controller/opensync-gateway-build</module>
                         </modules>
                 </profile>
         </profiles>
