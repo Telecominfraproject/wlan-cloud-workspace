@@ -5,7 +5,7 @@
 		<groupId>com.telecominfraproject.wlan</groupId>
 		<artifactId>tip-wlan-cloud-root-pom</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
-		<relativePath>../tip-wlan-cloud-root</relativePath>
+		<relativePath>../wlan-cloud-root</relativePath>
 	</parent>
 
         <artifactId>tip-wlan-cloud-workspace-all-modules-build</artifactId>
@@ -22,10 +22,10 @@
                                 <activeByDefault>true</activeByDefault>
                         </activation>
                         <modules>
-                                <module>../tip-wlan-cloud-root</module>
-                                <module>../tip-wlan-cloud-base/base-build</module>
-                                <module>../tip-wlan-cloud-services/cloud-services-build</module>
-                                <module>../tip-wlan-opensync-wifi-controller/opensync-gateway-build</module>
+                                <module>../wlan-cloud-root</module>
+                                <module>../wlan-cloud-base/base-build</module>
+                                <module>../wlan-cloud-services/cloud-services-build</module>
+                                <module>../wlan-cloud-opensync-controller/opensync-gateway-build</module>
                         </modules>
                 </profile>
         </profiles>
