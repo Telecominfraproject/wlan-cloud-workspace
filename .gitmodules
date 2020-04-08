@@ -1,12 +1,12 @@
-[submodule "tip-wlan-cloud-root"]
-	path = tip-wlan-cloud-root
-	url = git@github.com:Telecominfraproject/tip-wlan-cloud-root.git
-[submodule "tip-wlan-cloud-base"]
-	path = tip-wlan-cloud-base
-	url = git@github.com:Telecominfraproject/tip-wlan-cloud-base.git
-[submodule "tip-wlan-cloud-services"]
-	path = tip-wlan-cloud-services
-	url = git@github.com:Telecominfraproject/tip-wlan-cloud-services.git
-[submodule "tip-wlan-opensync-wifi-controller"]
-	path = tip-wlan-opensync-wifi-controller
-	url = git@github.com:Telecominfraproject/tip-wlan-opensync-wifi-controller.git
+[submodule "wlan-cloud-root"]
+	path = wlan-cloud-root
+	url = git@github.com:Telecominfraproject/wlan-cloud-root.git
+[submodule "wlan-cloud-base"]
+	path = wlan-cloud-base
+	url = git@github.com:Telecominfraproject/wlan-cloud-base.git
+[submodule "wlan-cloud-services"]
+	path = wlan-cloud-services
+	url = git@github.com:Telecominfraproject/wlan-cloud-services.git
+[submodule "wlan-cloud-opensync-controller"]
+	path = wlan-cloud-opensync-controller
+	url = git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git
