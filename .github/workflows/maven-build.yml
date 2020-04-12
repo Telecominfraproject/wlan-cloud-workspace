@@ -31,10 +31,18 @@ jobs:
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
-      - name: Build with Maven - deploy
+      - name: Build with Maven - deploy artifacts
         run:
           mvn -B --file all-modules-build/pom.xml -DskipTests deploy # Now that all builds have completed, we can deploy all the artifacts.
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
-
+      - name: Docker registry - login
+        run:
+          docker login --username build-pipeline --password ${{ secrets.MAVEN_REPO_PASSWORD }} tip-tip-wlan-cloud-docker-repo.jfrog.io
+      - name: Build and deploy the docker images
+        run:
+          mvn -B --file wlan-cloud-opensync-controller/opensync-gateway-static-docker/pom.xml
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
