@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<psf version="2.0">
+<provider id="org.eclipse.egit.core.GitProvider">
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,alarm-datastore-common-test"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,alarm-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,alarm-datastore-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,alarm-datastore-rdbms"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,alarm-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,alarm-service"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,alarm-service-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,alarm-service-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,alarm-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,all-cloud-in-one-process"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-client"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-build"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-container"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-elasticsearch"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-exceptions"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-hazelcast-client"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-hierarchical-datastore"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-jdbc"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-jdbc-tests"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-job"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-partitioner"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-remote-tests"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-scheduler"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,base-stream-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,client-datastore-common-test"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,client-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,client-datastore-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,client-datastore-rdbms"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,client-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,client-service"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,client-service-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,client-service-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,client-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,cloud-event-dispatcher"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,cloud-event-dispatcher-empty"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,cloud-event-dispatcher-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,cloud-event-dispatcher-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,cloud-event-dispatcher-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,cloud-metrics"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,cloud-services-build"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,common-hazelcast"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,customer-datastore-common-test"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,customer-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,customer-datastore-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,customer-datastore-rdbms"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,customer-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,customer-service"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,customer-service-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,customer-service-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,customer-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,equipment-datastore-common-test"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,equipment-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,equipment-datastore-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,equipment-datastore-rdbms"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,equipment-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,equipment-service"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,equipment-service-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,equipment-service-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,equipment-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,firmware-datastore-common-test"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,firmware-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,firmware-datastore-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,firmware-datastore-rdbms"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,firmware-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,firmware-service"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,firmware-service-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,firmware-service-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,firmware-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,json-patch-tip"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,location-datastore-common-test"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,location-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,location-datastore-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,location-datastore-rdbms"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,location-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,location-service"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,location-service-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,location-service-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,location-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,manufacturer-datastore-common-test"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,manufacturer-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,manufacturer-datastore-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,manufacturer-datastore-rdbms"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,manufacturer-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,manufacturer-service"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,manufacturer-service-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,manufacturer-service-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,manufacturer-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-ext-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-ext-static"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-gateway"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-gateway-build"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-gateway-static-docker"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-gateway-static-process"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-process"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-services"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-user-datastore-common-test"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-user-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-user-datastore-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-user-datastore-rdbms"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-user-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-user-service"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-user-service-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-user-service-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-user-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,profile-datastore-common-test"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,profile-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,profile-datastore-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,profile-datastore-rdbms"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,profile-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,profile-service"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,profile-service-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,profile-service-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,profile-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,prov-process"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,reflections-tip"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,routing-datastore-common-test"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,routing-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,routing-datastore-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,routing-datastore-rdbms"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,routing-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,routing-service"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,routing-service-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,routing-service-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,routing-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,service-metric-datastore-common-test"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,service-metric-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,service-metric-datastore-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,service-metric-datastore-rdbms"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,service-metric-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,service-metric-service"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,service-metric-service-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,service-metric-service-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,service-metric-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,single-process-streams"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,ssc-process"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,status-datastore-common-test"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,status-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,status-datastore-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,status-datastore-rdbms"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,status-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,status-service"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,status-service-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,status-service-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,status-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,system-event-datastore-common-test"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,system-event-datastore-inmemory"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,system-event-datastore-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,system-event-datastore-rdbms"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,system-event-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,system-event-service"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,system-event-service-interface"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,system-event-service-local"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,system-event-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-root.git,master,."/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,tip-wlan-cloud-service-metrics-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,tip-wlan-cloud-system-event-models"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-workspace.git,master,all-modules-build"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,webtoken-auth-service"/>
+</provider>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1587930624364_16" label="alarm" name="alarm">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/alarm-datastore-inmemory" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/alarm-service-local" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/alarm-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/alarm-models" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/alarm-service-remote" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/alarm-service-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/alarm-datastore-common-test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/alarm-datastore-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/alarm-datastore-rdbms" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1585245991588_10" label="all-build" name="all-build">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/tip-wlan-cloud-workspace-all-modules-build" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1587930648269_18" label="client" name="client">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/client-models" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/client-datastore-rdbms" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/client-datastore-inmemory" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/client-service-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/client-datastore-common-test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/client-service-local" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/client-datastore-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/client-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/client-service-remote" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1585245796344_5" label="cloud-base" name="cloud-base">
+<item elementID="=common-hazelcast" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-remote-tests" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-client" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-hierarchical-datastore" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-jdbc-tests" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-job" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=cloud-metrics" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-jdbc" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-container" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=json-patch-tip" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-exceptions" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-scheduler" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-datastore-inmemory" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-partitioner" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-elasticsearch" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-stream-interface" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/base-cloud-components-build" type="4"/>
+<item elementID="=base-hazelcast-client" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=base-models" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=reflections-tip" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=webtoken-auth-service" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1588339257600_25" label="cloud-event-dispatcher" name="cloud-event-dispatcher">
+<item elementID="=cloud-event-dispatcher" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=cloud-event-dispatcher-empty" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=cloud-event-dispatcher-interface" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=cloud-event-dispatcher-remote" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=cloud-event-dispatcher-local" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1585245732934_4" label="cloud-root" name="cloud-root">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/tip-wlan-cloud-root-pom" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1585245888480_7" label="cloud-services" name="cloud-services">
+<item elementID="=all-cloud-in-one-process" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=portal-process" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=single-process-streams" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=portal-services" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=ssc-process" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=prov-process" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=tip-wlan-cloud-system-event-models" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cloud-services-build" type="4"/>
+<item elementID="=tip-wlan-cloud-service-metrics-models" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1588339124680_23" label="customer" name="customer">
+<item elementID="=customer-datastore-rdbms" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=customer-datastore-inmemory" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=customer-service-interface" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=customer-service-remote" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=customer-models" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=customer-service" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=customer-datastore-common-test" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=customer-datastore-interface" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=customer-service-local" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1587327240480_11" label="equipment" name="equipment">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/equipment-datastore-rdbms" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/equipment-models" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/equipment-datastore-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/equipment-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/equipment-service-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/equipment-datastore-common-test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/equipment-service-local" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/equipment-service-remote" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/equipment-datastore-inmemory" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1587930732976_21" label="firmware" name="firmware">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/firmware-service-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/firmware-models" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/firmware-datastore-rdbms" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/firmware-datastore-inmemory" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/firmware-datastore-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/firmware-service-local" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/firmware-datastore-common-test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/firmware-service-remote" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/firmware-service" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1588339084894_22" label="location" name="location">
+<item elementID="=location-datastore-common-test" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=location-models" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=location-service-local" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=location-datastore-interface" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=location-datastore-inmemory" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=location-service-interface" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=location-datastore-rdbms" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=location-service-remote" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=location-service" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1587930749947_22" label="manufacturer" name="manufacturer">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/manufacturer-datastore-inmemory" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/manufacturer-service-local" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/manufacturer-datastore-rdbms" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/manufacturer-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/manufacturer-datastore-common-test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/manufacturer-datastore-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/manufacturer-models" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/manufacturer-service-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/manufacturer-service-remote" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1585245962904_9" label="opensync-wifi-controller" name="opensync-wifi-controller">
+<item elementID="=opensync-gateway-static-process" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=opensync-gateway" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/opensync-gateway-static-docker" type="4"/>
+<item elementID="=opensync-ext-interface" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=opensync-ext-static" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/opensync-gateway-build" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1587930589316_13" label="portal-user" name="portal-user">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/portal-user-datastore-common-test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/portal-user-service-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/portal-user-datastore-rdbms" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/portal-user-datastore-inmemory" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/portal-user-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/portal-user-models" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/portal-user-service-local" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/portal-user-service-remote" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/portal-user-datastore-interface" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1587930573316_12" label="profile" name="profile">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/profile-service-remote" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/profile-datastore-rdbms" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/profile-datastore-common-test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/profile-datastore-inmemory" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/profile-service-local" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/profile-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/profile-service-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/profile-datastore-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/profile-models" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1587930720898_20" label="routing" name="routing">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/routing-models" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/routing-datastore-rdbms" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/routing-service-local" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/routing-datastore-common-test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/routing-datastore-inmemory" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/routing-service-remote" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/routing-service-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/routing-datastore-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/routing-service" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1587930604709_14" label="service-metric" name="service-metric">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/service-metric-datastore-rdbms" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/service-metric-datastore-inmemory" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/service-metric-datastore-common-test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/service-metric-datastore-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/service-metric-service-remote" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/service-metric-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/service-metric-models" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/service-metric-service-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/service-metric-service-local" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1587930636328_17" label="status" name="status">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/status-service-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/status-service-remote" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/status-datastore-inmemory" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/status-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/status-models" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/status-service-local" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/status-datastore-rdbms" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/status-datastore-common-test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/status-datastore-interface" type="4"/>
+</workingSets>
+<workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1587930614692_15" label="system-event" name="system-event">
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/system-event-models" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/system-event-datastore-common-test" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/system-event-service-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/system-event-datastore-interface" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/system-event-service-remote" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/system-event-service-local" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/system-event-datastore-inmemory" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/system-event-service" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/system-event-datastore-rdbms" type="4"/>
+</workingSets>
+</psf>
