@@ -90,12 +90,16 @@
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,manufacturer-service-interface"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,manufacturer-service-local"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,manufacturer-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-ext-cloud"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-ext-interface"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-ext-static"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-gateway"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-gateway-build"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-gateway-cloud-docker"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-gateway-cloud-process"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-gateway-static-docker"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-opensync-controller.git,master,opensync-gateway-static-process"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-docker"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-process"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-services"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,portal-user-datastore-common-test"/>
@@ -116,6 +120,7 @@
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,profile-service-interface"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,profile-service-local"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,profile-service-remote"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,prov-docker"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,prov-process"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,reflections-tip"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,routing-datastore-common-test"/>
@@ -137,6 +142,7 @@
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,service-metric-service-local"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,service-metric-service-remote"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,single-process-streams"/>
+<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,ssc-docker"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,ssc-process"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,status-datastore-common-test"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,status-datastore-inmemory"/>
@@ -221,15 +227,18 @@
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/tip-wlan-cloud-root-pom" type="4"/>
 </workingSets>
 <workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1585245888480_7" label="cloud-services" name="cloud-services">
-<item elementID="=all-cloud-in-one-process" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=portal-process" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=single-process-streams" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
-<item elementID="=portal-services" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=ssc-process" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/prov-docker" type="4"/>
+<item elementID="=all-cloud-in-one-process" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=prov-process" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/portal-docker" type="4"/>
+<item elementID="=portal-process" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=tip-wlan-cloud-system-event-models" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=single-process-streams" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cloud-services-build" type="4"/>
 <item elementID="=tip-wlan-cloud-service-metrics-models" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item elementID="=portal-services" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ssc-docker" type="4"/>
 </workingSets>
 <workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1588339124680_23" label="customer" name="customer">
 <item elementID="=customer-datastore-rdbms" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
@@ -290,9 +299,12 @@
 <item elementID="=opensync-gateway-static-process" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=opensync-gateway" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/opensync-gateway-static-docker" type="4"/>
+<item elementID="=opensync-ext-cloud" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=opensync-ext-interface" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=opensync-ext-static" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/opensync-gateway-build" type="4"/>
+<item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/opensync-gateway-cloud-docker" type="4"/>
+<item elementID="=opensync-gateway-cloud-process" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 </workingSets>
 <workingSets editPageId="org.eclipse.jdt.ui.JavaWorkingSetPage" id="1587930589316_13" label="portal-user" name="portal-user">
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/portal-user-datastore-common-test" type="4"/>
