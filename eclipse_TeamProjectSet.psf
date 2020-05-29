@@ -163,7 +163,6 @@
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,system-event-service-local"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,system-event-service-remote"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-root.git,master,."/>
-<project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,tip-wlan-cloud-service-metrics-models"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-services.git,master,tip-wlan-cloud-system-event-models"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-workspace.git,master,all-modules-build"/>
 <project reference="1.0,git@github.com:Telecominfraproject/wlan-cloud-base.git,master,webtoken-auth-service"/>
@@ -236,7 +235,6 @@
 <item elementID="=tip-wlan-cloud-system-event-models" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=single-process-streams" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/cloud-services-build" type="4"/>
-<item elementID="=tip-wlan-cloud-service-metrics-models" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item elementID="=portal-services" factoryID="org.eclipse.jdt.ui.PersistableJavaElementFactory"/>
 <item factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/ssc-docker" type="4"/>
 </workingSets>
