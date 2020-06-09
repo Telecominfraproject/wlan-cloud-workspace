@@ -22,8 +22,8 @@ jobs:
           server-username: MAVEN_REPO_USERNAME # env variable for username in deploy
           server-password: MAVEN_REPO_PASSWORD # env variable for password in deploy
       - name: maven version
-          run: 
-            mvn -v
+        run:
+          mvn -v
       - name: Cache Maven packages
         uses: actions/cache@v1
         with:
