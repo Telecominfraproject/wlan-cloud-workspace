@@ -17,7 +17,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 14
-          maven-version: 3.6.3
           server-id: tip-wlan-cloud-maven-repo # Value of the distributionManagement/repository/id field of the pom.xml
           server-username: MAVEN_REPO_USERNAME # env variable for username in deploy
           server-password: MAVEN_REPO_PASSWORD # env variable for password in deploy
