@@ -34,6 +34,14 @@ jobs:
           login-server: tip-tip-wlan-cloud-docker-repo.jfrog.io
           username: build-pipeline
           password: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Prepare settings.xml with multiple repositories
+        run: |
+          sed -i '' "s/MAVEN_REPO_USERNAME/$MAVEN_REPO_USERNAME/g" maven_settings_template.xml
+          sed -i '' "s/MAVEN_REPO_PASSWORD/$MAVEN_REPO_PASSWORD/g" maven_settings_template.xml
+          cp maven_settings_template.xml /home/runner/.m2/settings.xml
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Build with Maven - test
         run: 
           mvn -B --file all-modules-build/pom.xml verify # Ensure all artifacts build successfully before we attempt deploy in order to prevent partial deploys.
