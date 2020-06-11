@@ -36,11 +36,12 @@ jobs:
           password: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Prepare settings.xml with multiple repositories
         run: |
-          sed --quiet --in-place "s/MAVEN_REPO_USERNAME/$MAVEN_REPO_USERNAME/g" maven_settings_template.xml
-          sed --quiet --in-place "s/MAVEN_REPO_PASSWORD/$MAVEN_REPO_PASSWORD/g" maven_settings_template.xml
+          sed --in-place "s/MAVEN_REPO_USERNAME/$MAVEN_REPO_USERNAME/g" maven_settings_template.xml
+          sed --in-place "s/MAVEN_REPO_PASSWORD/$MAVEN_REPO_PASSWORD/g" maven_settings_template.xml
           cp maven_settings_template.xml /home/runner/.m2/settings.xml
-          ls -ltr
+          echo Tail of maven_settings_template.xml
           tail maven_settings_template.xml
+          echo Tail of /home/runner/.m2/settings.xml
           tail /home/runner/.m2/settings.xml
         env:
           MAVEN_REPO_USERNAME: build-pipeline
