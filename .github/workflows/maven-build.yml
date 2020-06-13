@@ -58,11 +58,16 @@ jobs:
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
-      - name: Build and deploy the docker images
+      - name: Build and deploy the docker images for the static OpenSync gateway
         run:
           mvn -B --file wlan-cloud-opensync-controller/opensync-gateway-static-docker/pom.xml deploy
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
-
+      - name: Build and deploy the docker images for the all-cloud-and-opensync-gw-in-one process
+        run:
+          mvn -B --file wlan-cloud-services/all-cloud-and-opensync-gw-in-one-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
 
