@@ -29,4 +29,19 @@
       <mirrorOf>spring-milestones</mirrorOf>
     </mirror>
   </mirrors>
+
+  <profiles>
+    <profile>
+      <id>schema-publisher</id>
+      <properties>
+        <schema-repository-user>MAVEN_REPO_USERNAME</schema-repository-user>
+        <schema-repository-password>MAVEN_REPO_PASSWORD</schema-repository-password>
+      </properties>
+    </profile>
+  </profiles>
+
+  <activeProfiles>
+    <activeProfile>schema-publisher</activeProfile>
+  </activeProfiles>
+
 </settings>
