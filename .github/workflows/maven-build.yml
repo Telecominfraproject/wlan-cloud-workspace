@@ -17,9 +17,6 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 14
-          server-id: tip-wlan-cloud-maven-repo # Value of the distributionManagement/repository/id field of the pom.xml
-          server-username: MAVEN_REPO_USERNAME # env variable for username in deploy
-          server-password: MAVEN_REPO_PASSWORD # env variable for password in deploy
       - name: maven version
         run:
           mvn -v
@@ -34,18 +31,8 @@ jobs:
           login-server: tip-tip-wlan-cloud-docker-repo.jfrog.io
           username: build-pipeline
           password: ${{ secrets.MAVEN_REPO_PASSWORD }}
-      - name: Prepare settings.xml with multiple repositories
-        run: |
-          sed --in-place "s/MAVEN_REPO_USERNAME/$MAVEN_REPO_USERNAME/g" maven_settings_template.xml
-          sed --in-place "s/MAVEN_REPO_PASSWORD/$MAVEN_REPO_PASSWORD/g" maven_settings_template.xml
-          cp maven_settings_template.xml /home/runner/.m2/settings.xml
-          echo Tail of maven_settings_template.xml
-          tail maven_settings_template.xml
-          echo Tail of /home/runner/.m2/settings.xml
-          tail /home/runner/.m2/settings.xml
-        env:
-          MAVEN_REPO_USERNAME: build-pipeline
-          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Configure maven settings.xml
+        run: cp .github/workflows/maven_settings_template.xml /home/runner/.m2/settings.xml
       - name: Build with Maven - test
         run: 
           mvn -B --file all-modules-build/pom.xml verify # Ensure all artifacts build successfully before we attempt deploy in order to prevent partial deploys.
