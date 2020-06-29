@@ -69,4 +69,33 @@ jobs:
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
-
+      - name: Build and deploy the docker image for the Portal process
+        run:
+          mvn -B --file wlan-cloud-services/portal-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build and deploy the docker images for the Provisioning process
+        run:
+          mvn -B --file wlan-cloud-services/prov-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build and deploy the docker images for the Scalable Service Container process
+        run:
+          mvn -B --file wlan-cloud-services/ssc-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build and deploy the docker images for the Stream Processor process
+        run:
+          mvn -B --file wlan-cloud-services/spc-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Generate and push the cloud-sdk-schema
+        run:
+          mvn -B --file wlan-cloud-services/schema-generator/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
