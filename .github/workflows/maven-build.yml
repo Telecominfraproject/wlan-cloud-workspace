@@ -93,6 +93,12 @@ jobs:
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build and deploy the docker images for the Port Forwarding Gateway process
+        run:
+          mvn -B --file wlan-cloud-services/port-forwarding-gateway-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Generate and push the cloud-sdk-schema
         run:
           mvn -B --file wlan-cloud-services/schema-generator/pom.xml deploy
