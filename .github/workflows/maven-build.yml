@@ -4,6 +4,10 @@ on:
   push:
     branches: [ master ]
 
+  schedule:
+    # runs nightly build at 5AM
+    - cron:  '00 09 * * *'
+      
 jobs:
   build:
     runs-on: ubuntu-latest
