@@ -41,8 +41,8 @@ jobs:
         run: |          
           TIMESTAMP=$(date +'%Y-%m-%d')
           echo $TIMESTAMP
-          mvn --file wlan-cloud-root/pom.xml help:evaluate -Dexpression=project.version | grep -e '^[^\[]'
-          MVN_VERSION=$(mvn --file wlan-cloud-root/pom.xml help:evaluate -Dexpression=project.version | grep -e '^[^\[]')
+          mvn org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout -f wlan-cloud-root/pom.xml
+          MVN_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout -f wlan-cloud-root/pom.xml)
           echo $MVN_VERSION
           echo date=$TIMESTAMP > wlan-cloud-base/base-container/src/main/resources/commit.properties
           echo commitId=$GITHUB_SHA >> wlan-cloud-base/base-container/src/main/resources/commit.properties
