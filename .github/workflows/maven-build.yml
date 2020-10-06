@@ -37,6 +37,19 @@ jobs:
           password: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Configure maven settings.xml
         run: cp .github/workflows/maven_settings_template.xml /home/runner/.m2/settings.xml
+      - name: Updating commit file
+        run: |          
+          TIMESTAMP=$(date +'%Y-%m-%d')
+          echo $TIMESTAMP
+          mvn org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout -f wlan-cloud-root/pom.xml
+          MVN_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout -f wlan-cloud-root/pom.xml)
+          echo $MVN_VERSION
+          echo date=$TIMESTAMP > wlan-cloud-base/base-container/src/main/resources/commit.properties
+          echo commitId=$GITHUB_SHA >> wlan-cloud-base/base-container/src/main/resources/commit.properties
+          echo projectVersion=$MVN_VERSION>> wlan-cloud-base/base-container/src/main/resources/commit.properties
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}           
       - name: Build with Maven - test
         run: 
           mvn -B --file all-modules-build/pom.xml verify # Ensure all artifacts build successfully before we attempt deploy in order to prevent partial deploys.
