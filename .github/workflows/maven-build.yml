@@ -41,8 +41,8 @@ jobs:
         run: |          
           TIMESTAMP=$(date +'%Y-%m-%d')
           echo $TIMESTAMP
-          mvn help:evaluate -Dexpression=project.version | grep -e '^[^\[]'
-          MVN_VERSION=$(mvn help:evaluate -Dexpression=project.version | grep -e '^[^\[]')
+          mvn --file wlan-cloud-root/pom.xml help:evaluate -Dexpression=project.version | grep -e '^[^\[]'
+          MVN_VERSION=$(mvn --file wlan-cloud-root/pom.xml help:evaluate -Dexpression=project.version | grep -e '^[^\[]')
           echo $MVN_VERSION
           echo date=$TIMESTAMP > wlan-cloud-base/base-container/src/main/resources/commit.properties
           echo commitId=$GITHUB_SHA >> wlan-cloud-base/base-container/src/main/resources/commit.properties
