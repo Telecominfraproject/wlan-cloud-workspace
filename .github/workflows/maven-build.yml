@@ -37,6 +37,13 @@ jobs:
           password: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Configure maven settings.xml
         run: cp .github/workflows/maven_settings_template.xml /home/runner/.m2/settings.xml
+      - name: Updating commit file
+        run: |          
+          TIMESTAMP=$(date +'%Y-%m-%d')
+          MVN_VERSION=$(mvn --file wlan-cloud-root/pom.xml -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+          echo date=$TIMESTAMP > wlan-cloud-base/base-container/src/main/resources/commit.properties
+          echo commitId=$GITHUB_SHA >> wlan-cloud-base/base-container/src/main/resources/commit.properties
+          echo projectVersion=$MVN_VERSION>> wlan-cloud-base/base-container/src/main/resources/commit.properties          
       - name: Build with Maven - test
         run: 
           mvn -B --file all-modules-build/pom.xml verify # Ensure all artifacts build successfully before we attempt deploy in order to prevent partial deploys.
