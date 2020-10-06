@@ -41,7 +41,7 @@ jobs:
         run: |          
           TIMESTAMP=$(date +'%Y-%m-%d')
           echo $TIMESTAMP
-          MVN_VERSION=$(mvn --file wlan-cloud-root/pom.xml -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)
+          MVN_VERSION=0.0.1-SNAPSHOT
           echo $MVN_VERSION
           echo date=$TIMESTAMP > wlan-cloud-base/base-container/src/main/resources/commit.properties
           echo commitId=$GITHUB_SHA >> wlan-cloud-base/base-container/src/main/resources/commit.properties
