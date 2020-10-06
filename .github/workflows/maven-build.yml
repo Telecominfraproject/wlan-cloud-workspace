@@ -10,6 +10,7 @@ on:
       
 jobs:
   build:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
 
     steps:
@@ -117,6 +118,156 @@ jobs:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Generate and push the cloud-sdk-schema
+        run:
+          mvn -B --file wlan-cloud-services/schema-generator/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+          
+  Nightlybuild:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+        with:
+          ssh-key: ${{ secrets.GH_AUTOMATION_KEY }}
+          submodules: true
+          
+      - name: Checking if the last commit was more than 24 hrs
+        id: check
+        run: |
+          TimePassed=$(echo -e `git show --format="%ar" $branch | head -n 1`)
+          echo $TimePassed
+          if [[ $TimePassed == *"hour"* ]] || [[ "$TimePassed" == *"minute"* ]] || [[ $TimePassed == *"second"* ]]; then
+          echo "Last commit was less than 24 hours"
+          buildRequired=true
+          fi
+          echo ::set-output name=key::$buildRequired
+
+
+      - uses: actions/checkout@v2
+        with:
+          ssh-key: ${{ secrets.GH_AUTOMATION_KEY }}
+          submodules: true
+      - name: Set up JDK 1.14
+        if: steps.check.outputs.key == 'true'        
+        uses: actions/setup-java@v1
+        with:
+          java-version: 14
+      - name: maven version
+        if: steps.check.outputs.key == 'true'
+        run:
+          mvn -v
+      - name: Cache Maven packages
+        if: steps.check.outputs.key == 'true'
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2
+      - name: Login to TIP Docker registry
+        if: steps.check.outputs.key == 'true' 
+        uses: azure/docker-login@v1
+        with:
+          login-server: tip-tip-wlan-cloud-docker-repo.jfrog.io
+          username: build-pipeline
+          password: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Configure maven settings.xml
+        if: steps.check.outputs.key == 'true'
+        run: cp .github/workflows/maven_settings_template.xml /home/runner/.m2/settings.xml
+      - name: Updating commit file
+        if: steps.check.outputs.key == 'true'
+        run: |          
+          TIMESTAMP=$(date +'%Y-%m-%d')
+          echo $TIMESTAMP
+          mvn org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout -f wlan-cloud-root/pom.xml
+          MVN_VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.2.0:evaluate -Dexpression=project.version -q -DforceStdout -f wlan-cloud-root/pom.xml)
+          echo $MVN_VERSION
+          echo date=$TIMESTAMP > wlan-cloud-base/base-container/src/main/resources/commit.properties
+          echo commitId=$GITHUB_SHA >> wlan-cloud-base/base-container/src/main/resources/commit.properties
+          echo projectVersion=$MVN_VERSION>> wlan-cloud-base/base-container/src/main/resources/commit.properties
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}           
+      - name: Build with Maven - test
+        if: steps.check.outputs.key == 'true'
+        run: 
+          mvn -B --file all-modules-build/pom.xml verify # Ensure all artifacts build successfully before we attempt deploy in order to prevent partial deploys.
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build with Maven - deploy artifacts
+        if: steps.check.outputs.key == 'true'
+        run:
+          mvn -B --file all-modules-build/pom.xml -DskipTests deploy # Now that all builds have completed, we can deploy all the artifacts.
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build and deploy the docker images for the static OpenSync gateway
+        if: steps.check.outputs.key == 'true'
+        run:
+          mvn -B --file wlan-cloud-opensync-controller/opensync-gateway-static-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build and deploy the docker images for the cloud OpenSync gateway
+        if: steps.check.outputs.key == 'true'
+        run:
+          mvn -B --file wlan-cloud-opensync-controller/opensync-gateway-cloud-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build and deploy the docker images for the all-cloud-and-opensync-gw-in-one process
+        if: steps.check.outputs.key == 'true'
+        run:
+          mvn -B --file wlan-cloud-services/all-cloud-and-opensync-gw-in-one-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build and deploy the docker images for the all-cloud-in-one process
+        if: steps.check.outputs.key == 'true'
+        run:
+          mvn -B --file wlan-cloud-services/all-cloud-in-one-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build and deploy the docker image for the Portal process
+        if: steps.check.outputs.key == 'true'
+        run:
+          mvn -B --file wlan-cloud-services/portal-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build and deploy the docker images for the Provisioning process
+        if: steps.check.outputs.key == 'true'
+        run:
+          mvn -B --file wlan-cloud-services/prov-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build and deploy the docker images for the Scalable Service Container process
+        if: steps.check.outputs.key == 'true'
+        run:
+          mvn -B --file wlan-cloud-services/ssc-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build and deploy the docker images for the Stream Processor process
+        if: steps.check.outputs.key == 'true'
+        run:
+          mvn -B --file wlan-cloud-services/spc-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Build and deploy the docker images for the Port Forwarding Gateway process
+        if: steps.check.outputs.key == 'true'
+        run:
+          mvn -B --file wlan-cloud-services/port-forwarding-gateway-docker/pom.xml deploy
+        env:
+          MAVEN_REPO_USERNAME: build-pipeline
+          MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
+      - name: Generate and push the cloud-sdk-schema
+        if: steps.check.outputs.key == 'true'
         run:
           mvn -B --file wlan-cloud-services/schema-generator/pom.xml deploy
         env:
