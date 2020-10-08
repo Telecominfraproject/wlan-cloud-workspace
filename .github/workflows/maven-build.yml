@@ -47,6 +47,7 @@ jobs:
           echo date=$TIMESTAMP > wlan-cloud-base/base-container/src/main/resources/commit.properties
           echo commitId=$GITHUB_SHA >> wlan-cloud-base/base-container/src/main/resources/commit.properties
           echo projectVersion=$MVN_VERSION>> wlan-cloud-base/base-container/src/main/resources/commit.properties
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/portal-docker/src/main/docker/app/.
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}           
@@ -64,54 +65,65 @@ jobs:
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Build and deploy the docker images for the static OpenSync gateway
         run:
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-opensync-controller/opensync-gateway-static-docker/src/main/docker/app/.
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-opensync-controller/opensync-gateway-static-docker/src/main/docker-opensync-gateway-and-mqtt/app/.
           mvn -B --file wlan-cloud-opensync-controller/opensync-gateway-static-docker/pom.xml deploy
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Build and deploy the docker images for the cloud OpenSync gateway
         run:
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-opensync-controller/opensync-gateway-cloud-docker/src/main/docker/app/.
           mvn -B --file wlan-cloud-opensync-controller/opensync-gateway-cloud-docker/pom.xml deploy
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Build and deploy the docker images for the all-cloud-and-opensync-gw-in-one process
         run:
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/all-cloud-and-opensync-gw-in-one-docker/src/main/docker/app/.
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/all-cloud-and-opensync-gw-in-one-docker/src/main/docker-with-mqtt/app/.
           mvn -B --file wlan-cloud-services/all-cloud-and-opensync-gw-in-one-docker/pom.xml deploy
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Build and deploy the docker images for the all-cloud-in-one process
         run:
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/all-cloud-in-one-docker/src/main/docker/app/.
           mvn -B --file wlan-cloud-services/all-cloud-in-one-docker/pom.xml deploy
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Build and deploy the docker image for the Portal process
         run:
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/portal-docker/src/main/docker/app/.
           mvn -B --file wlan-cloud-services/portal-docker/pom.xml deploy
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Build and deploy the docker images for the Provisioning process
         run:
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/prov-docker/src/main/docker/app/.
           mvn -B --file wlan-cloud-services/prov-docker/pom.xml deploy
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Build and deploy the docker images for the Scalable Service Container process
         run:
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/ssc-docker/src/main/docker/app/.
           mvn -B --file wlan-cloud-services/ssc-docker/pom.xml deploy
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Build and deploy the docker images for the Stream Processor process
         run:
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/spc-docker/src/main/docker/app/.
           mvn -B --file wlan-cloud-services/spc-docker/pom.xml deploy
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Build and deploy the docker images for the Port Forwarding Gateway process
         run:
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/port-forwarding-gateway-docker/src/main/docker/app/.
           mvn -B --file wlan-cloud-services/port-forwarding-gateway-docker/pom.xml deploy
         env:
           MAVEN_REPO_USERNAME: build-pipeline
