@@ -49,6 +49,15 @@ jobs:
           echo projectVersion=$MVN_VERSION>> wlan-cloud-base/base-container/src/main/resources/commit.properties
           cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-opensync-controller/opensync-gateway-static-docker/src/main/docker/app/.
           cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-opensync-controller/opensync-gateway-static-docker/src/main/docker-opensync-gateway-and-mqtt/app/.
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-opensync-controller/opensync-gateway-cloud-docker/src/main/docker/app/.
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/all-cloud-and-opensync-gw-in-one-docker/src/main/docker/app/.
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/all-cloud-and-opensync-gw-in-one-docker/src/main/docker-with-mqtt/app/.
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/all-cloud-in-one-docker/src/main/docker/app/.
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/portal-docker/src/main/docker/app/.
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/prov-docker/src/main/docker/app/.
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/ssc-docker/src/main/docker/app/.
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/spc-docker/src/main/docker/app/.
+          cp wlan-cloud-base/base-container/src/main/resources/commit.properties wlan-cloud-services/port-forwarding-gateway-docker/src/main/docker/app/.
         env:
           MAVEN_REPO_USERNAME: build-pipeline
           MAVEN_REPO_PASSWORD: ${{ secrets.MAVEN_REPO_PASSWORD }}           
