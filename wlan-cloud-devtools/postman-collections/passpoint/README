@@ -1,0 +1,3 @@
+This collection comes with the required variables defined as it's environment. It is recommended that any variable alterations or settings are performed in the Variables section of the collection, and that no other environment is used simulataneously, as this can cause confusing errors.
+
+Primary purpose of this collection is to facilitate creation of Hotspot profiles for application to an AP. Additional required configuration profiles are included.
