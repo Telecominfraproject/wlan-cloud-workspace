@@ -833,7 +833,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"passpoint_osu_id_provider\",\n        \"name\": \"{{provider-name-1}}\",\n        \"details\": {\n            \"model_type\": \"PasspointOsuProviderProfile\",\n            \"domainName\": \"{{provider-1-domain-name}}\",\n            \"mccMncList\": [\n                {\n                    \"model_type\": \"PasspointMccMnc\",\n                    \"mcc\": 302,\n                    \"mnc\": 720,\n                    \"iso\": \"ca\",\n                    \"country\": \"Canada\",\n                    \"countryCode\": 1,\n                    \"network\": \"Rogers AT&T Wireless\",\n                    \"mccMncPairing\": \"302,720\"\n                }\n            ],\n            \"naiRealmList\": [\n                {\n                    \"model_type\": \"PasspointNaiRealmInformation\",\n                    \"naiRealms\": [\n                        \"{{provider-1-domain-name}}\"\n                    ],\n                    \"encoding\": 0,\n                    \"eapMethods\": [\n                        \"EAP-TTLS with username/password\",\n                        \"EAP-TLS with certificate\"\n                    ],\n                    \"eapMap\": {\n                        \"EAP-TTLS with username/password\": [\n                            \"Credential Type:username/password\",\n                            \"Non-EAP Inner Authentication Type:MSCHAPV2\"\n                        ],\n                        \"EAP-TLS with certificate\": [\n                            \"Credential Type:Certificate\"\n                        ]\n                    }\n                }\n            ],\n            \"osuIconList\": [\n                {\n                    \"model_type\": \"PasspointOsuIcon\",\n                    \"iconWidth\": 32,\n                    \"iconHeight\": 32,\n                    \"languageCode\": \"eng\",\n                    \"iconLocale\": \"en_CA\",\n                    \"iconName\": \"icon32eng\",\n                    \"filePath\": \"/tmp/icon32eng.png\",\n                    \"imageUrl\": \"https://localhost:9096/icon32eng.png\",\n                    \"hs20IconString\": \"32:32:eng:image/png:icon32eng:/tmp/icon32eng.png\"\n                },\n                {\n                    \"model_type\": \"PasspointOsuIcon\",\n                    \"iconWidth\": 32,\n                    \"iconHeight\": 32,\n                    \"languageCode\": \"fra\",\n                    \"iconLocale\": \"fr_CA\",\n                    \"iconName\": \"icon32fra\",\n                    \"filePath\": \"/tmp/icon32fra.png\",\n                    \"imageUrl\": \"https://localhost:9096/icon32fra.png\",\n                    \"hs20IconString\": \"32:32:fra:image/png:icon32fra:/tmp/icon32fra.png\"\n                },\n                {\n                    \"model_type\": \"PasspointOsuIcon\",\n                    \"iconWidth\": 32,\n                    \"iconHeight\": 32,\n                    \"languageCode\": \"eng\",\n                    \"iconLocale\": \"en_US\",\n                    \"iconName\": \"icon32usa\",\n                    \"filePath\": \"/tmp/icon32usa.png\",\n                    \"imageUrl\": \"https://localhost:9096/icon32usa.png\",\n                    \"hs20IconString\": \"32:32:eng:image/png:icon32usa:/tmp/icon32usa.png\"\n                }\n            ],\n            \"osuServerUri\": \"https://example.com/osu/rogers\",\n            \"osuFriendlyName\": [\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"en_CA\",\n                    \"dupleIso3Language\": \"eng\",\n                    \"dupleName\": \"Example provider rogers\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"eng:Example provider rogers\"\n                },\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"fr_CA\",\n                    \"dupleIso3Language\": \"fra\",\n                    \"dupleName\": \"Exemple de fournisseur rogers\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"fra:Exemple de fournisseur rogers\"\n                }\n            ],\n            \"osuNaiStandalone\": \"anonymous@{{provider-1-domain-name}}\",\n            \"osuNaiShared\": \"anonymous@{{provider-1-domain-name}}\",\n            \"osuMethodList\": [\n                1,\n                0\n            ],\n            \"osuServiceDescription\": [\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"en_CA\",\n                    \"dupleIso3Language\": \"eng\",\n                    \"dupleName\": \"Example services rogers\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"eng:Example services rogers\"\n                },\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"fr_CA\",\n                    \"dupleIso3Language\": \"fra\",\n                    \"dupleName\": \"Exemples de services rogers\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"fra:Exemples de services rogers\"\n                }\n            ],\n            \"roamingOi\": [\n                1,\n                2,\n                3,\n                4\n            ],\n            \"profileType\": \"passpoint_osu_id_provider\"\n        },\n        \"childProfileIds\": []\n    }\n]"
+							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"passpoint_osu_id_provider\",\n        \"name\": \"{{provider-name-1}}\",\n        \"details\": {\n            \"model_type\": \"PasspointOsuProviderProfile\",\n            \"domainName\": \"{{provider-1-domain-name}}\",\n            \"mccMncList\": [\n                {\n                    \"model_type\": \"PasspointMccMnc\",\n                    \"mcc\": 302,\n                    \"mnc\": 720,\n                    \"iso\": \"ca\",\n                    \"country\": \"Canada\",\n                    \"countryCode\": 1,\n                    \"network\": \"Rogers AT&T Wireless\",\n                    \"mccMncPairing\": \"302,720\"\n                }\n            ],\n            \"naiRealmList\": [\n                {\n                    \"model_type\": \"PasspointNaiRealmInformation\",\n                    \"naiRealms\": [\n                        \"{{provider-1-domain-name}}\"\n                    ],\n                    \"encoding\": 0,\n                    \"eapMethods\": [\n                        \"EAP-TTLS with username/password\",\n                        \"EAP-TLS with certificate\"\n                    ],\n                    \"eapMap\": {\n                        \"EAP-TTLS with username/password\": [\n                            \"Credential Type:username/password\",\n                            \"Non-EAP Inner Authentication Type:MSCHAPV2\"\n                        ],\n                        \"EAP-TLS with certificate\": [\n                            \"Credential Type:Certificate\"\n                        ]\n                    }\n                }\n            ],\n            \"osuIconList\": [\n                {\n                    \"model_type\": \"PasspointOsuIcon\",\n                    \"iconWidth\": 32,\n                    \"iconHeight\": 32,\n                    \"languageCode\": \"eng\",\n                    \"iconLocale\": \"en_CA\",\n                    \"iconName\": \"icon32eng\",\n                    \"filePath\": \"/tmp/icon32eng.png\",\n                    \"imageUrl\": \"https://localhost:9096/icon32eng.png\",\n                    \"hs20IconString\": \"32:32:eng:image/png:icon32eng:/tmp/icon32eng.png\"\n                },\n                {\n                    \"model_type\": \"PasspointOsuIcon\",\n                    \"iconWidth\": 32,\n                    \"iconHeight\": 32,\n                    \"languageCode\": \"fra\",\n                    \"iconLocale\": \"fr_CA\",\n                    \"iconName\": \"icon32fra\",\n                    \"filePath\": \"/tmp/icon32fra.png\",\n                    \"imageUrl\": \"https://localhost:9096/icon32fra.png\",\n                    \"hs20IconString\": \"32:32:fra:image/png:icon32fra:/tmp/icon32fra.png\"\n                },\n                {\n                    \"model_type\": \"PasspointOsuIcon\",\n                    \"iconWidth\": 32,\n                    \"iconHeight\": 32,\n                    \"languageCode\": \"eng\",\n                    \"iconLocale\": \"en_US\",\n                    \"iconName\": \"icon32usa\",\n                    \"filePath\": \"/tmp/icon32usa.png\",\n                    \"imageUrl\": \"https://localhost:9096/icon32usa.png\",\n                    \"hs20IconString\": \"32:32:eng:image/png:icon32usa:/tmp/icon32usa.png\"\n                }\n            ],\n            \"osuServerUri\": \"https://example.com/osu/rogers\",\n            \"osuFriendlyName\": [\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"en_CA\",\n                    \"dupleIso3Language\": \"eng\",\n                    \"dupleName\": \"Example provider rogers\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"eng:Example provider rogers\"\n                },\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"fr_CA\",\n                    \"dupleIso3Language\": \"fra\",\n                    \"dupleName\": \"Exemple de fournisseur rogers\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"fra:Exemple de fournisseur rogers\"\n                }\n            ],\n            \"osuNaiStandalone\": \"anonymous@{{provider-1-domain-name}}\",\n            \"osuNaiShared\": \"anonymous@{{provider-1-domain-name}}\",\n            \"osuMethodList\": [\n                1,\n                0\n            ],\n            \"osuServiceDescription\": [\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"en_CA\",\n                    \"dupleIso3Language\": \"eng\",\n                    \"dupleName\": \"Example services rogers\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"eng:Example services rogers\"\n                },\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"fr_CA\",\n                    \"dupleIso3Language\": \"fra\",\n                    \"dupleName\": \"Exemples de services rogers\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"fra:Exemples de services rogers\"\n                }\n            ],\n            \"roamingOi\": [\n                2,\n                3,\n                44,\n                33\n            ],\n            \"profileType\": \"passpoint_osu_id_provider\"\n        },\n        \"childProfileIds\": []\n    }\n]"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/portal/profile",
@@ -945,7 +945,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"id\": 20,\n        \"customerId\": 2,\n        \"profileType\": \"passpoint_osu_id_provider\",\n        \"name\": \"{{provider-name-2}}\",\n        \"details\": {\n            \"model_type\": \"PasspointOsuProviderProfile\",\n            \"domainName\": \"{{provider-2-domain-name}}\",\n            \"mccMncList\": [\n                {\n                    \"model_type\": \"PasspointMccMnc\",\n                    \"mcc\": 302,\n                    \"mnc\": 220,\n                    \"iso\": \"ca\",\n                    \"country\": \"Canada\",\n                    \"countryCode\": 1,\n                    \"network\": \"Telus Mobility\",\n                    \"mccMncPairing\": \"302,220\"\n                }\n            ],\n            \"naiRealmList\": [\n                {\n                    \"model_type\": \"PasspointNaiRealmInformation\",\n                    \"naiRealms\": [\n                        \"{{provider-2-domain-name}}\"\n                    ],\n                    \"encoding\": 0,\n                    \"eapMethods\": [\n                        \"EAP-TTLS with username/password\",\n                        \"EAP-TLS with certificate\"\n                    ],\n                    \"eapMap\": {\n                        \"EAP-TTLS with username/password\": [\n                            \"Credential Type:username/password\",\n                            \"Non-EAP Inner Authentication Type:MSCHAPV2\"\n                        ],\n                        \"EAP-TLS with certificate\": [\n                            \"Credential Type:Certificate\"\n                        ]\n                    }\n                }\n            ],\n            \"osuIconList\": [\n                {\n                    \"model_type\": \"PasspointOsuIcon\",\n                    \"iconWidth\": 32,\n                    \"iconHeight\": 32,\n                    \"languageCode\": \"eng\",\n                    \"iconLocale\": \"en_CA\",\n                    \"iconName\": \"icon32eng\",\n                    \"filePath\": \"/tmp/icon32eng.png\",\n                    \"imageUrl\": \"https://localhost:9096/icon32eng.png\",\n                    \"hs20IconString\": \"32:32:eng:image/png:icon32eng:/tmp/icon32eng.png\"\n                },\n                {\n                    \"model_type\": \"PasspointOsuIcon\",\n                    \"iconWidth\": 32,\n                    \"iconHeight\": 32,\n                    \"languageCode\": \"fra\",\n                    \"iconLocale\": \"fr_CA\",\n                    \"iconName\": \"icon32fra\",\n                    \"filePath\": \"/tmp/icon32fra.png\",\n                    \"imageUrl\": \"https://localhost:9096/icon32fra.png\",\n                    \"hs20IconString\": \"32:32:fra:image/png:icon32fra:/tmp/icon32fra.png\"\n                },\n                {\n                    \"model_type\": \"PasspointOsuIcon\",\n                    \"iconWidth\": 32,\n                    \"iconHeight\": 32,\n                    \"languageCode\": \"eng\",\n                    \"iconLocale\": \"en_US\",\n                    \"iconName\": \"icon32usa\",\n                    \"filePath\": \"/tmp/icon32usa.png\",\n                    \"imageUrl\": \"https://localhost:9096/icon32usa.png\",\n                    \"hs20IconString\": \"32:32:eng:image/png:icon32usa:/tmp/icon32usa.png\"\n                }\n            ],\n            \"osuServerUri\": \"https://example.com/osu/telus\",\n            \"osuFriendlyName\": [\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"en_CA\",\n                    \"dupleIso3Language\": \"eng\",\n                    \"dupleName\": \"Example provider telus\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"eng:Example provider telus\"\n                },\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"fr_CA\",\n                    \"dupleIso3Language\": \"fra\",\n                    \"dupleName\": \"Exemple de fournisseur telus\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"fra:Exemple de fournisseur telus\"\n                }\n            ],\n            \"osuNaiStandalone\": \"anonymous@{{provider-2-domain-name}}\",\n            \"osuNaiShared\": \"anonymous@{{provider-2-domain-name}}\",\n            \"osuMethodList\": [\n                1,\n                0\n            ],\n            \"osuServiceDescription\": [\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"en_CA\",\n                    \"dupleIso3Language\": \"eng\",\n                    \"dupleName\": \"Example services telus\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"eng:Example services telus\"\n                },\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"fr_CA\",\n                    \"dupleIso3Language\": \"fra\",\n                    \"dupleName\": \"Exemples de services telus\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"fra:Exemples de services telus\"\n                }\n            ],\n            \"roamingOi\": [\n                1,\n                2,\n                3,\n                4\n            ],\n            \"profileType\": \"passpoint_osu_id_provider\"\n        },\n        \"childProfileIds\": []\n    }\n]"
+							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"id\": 20,\n        \"customerId\": 2,\n        \"profileType\": \"passpoint_osu_id_provider\",\n        \"name\": \"{{provider-name-2}}\",\n        \"details\": {\n            \"model_type\": \"PasspointOsuProviderProfile\",\n            \"domainName\": \"{{provider-2-domain-name}}\",\n            \"mccMncList\": [\n                {\n                    \"model_type\": \"PasspointMccMnc\",\n                    \"mcc\": 302,\n                    \"mnc\": 220,\n                    \"iso\": \"ca\",\n                    \"country\": \"Canada\",\n                    \"countryCode\": 1,\n                    \"network\": \"Telus Mobility\",\n                    \"mccMncPairing\": \"302,220\"\n                }\n            ],\n            \"naiRealmList\": [\n                {\n                    \"model_type\": \"PasspointNaiRealmInformation\",\n                    \"naiRealms\": [\n                        \"{{provider-2-domain-name}}\"\n                    ],\n                    \"encoding\": 0,\n                    \"eapMethods\": [\n                        \"EAP-TTLS with username/password\",\n                        \"EAP-TLS with certificate\"\n                    ],\n                    \"eapMap\": {\n                        \"EAP-TTLS with username/password\": [\n                            \"Credential Type:username/password\",\n                            \"Non-EAP Inner Authentication Type:MSCHAPV2\"\n                        ],\n                        \"EAP-TLS with certificate\": [\n                            \"Credential Type:Certificate\"\n                        ]\n                    }\n                }\n            ],\n            \"osuIconList\": [\n                {\n                    \"model_type\": \"PasspointOsuIcon\",\n                    \"iconWidth\": 32,\n                    \"iconHeight\": 32,\n                    \"languageCode\": \"eng\",\n                    \"iconLocale\": \"en_CA\",\n                    \"iconName\": \"icon32eng\",\n                    \"filePath\": \"/tmp/icon32eng.png\",\n                    \"imageUrl\": \"https://localhost:9096/icon32eng.png\",\n                    \"hs20IconString\": \"32:32:eng:image/png:icon32eng:/tmp/icon32eng.png\"\n                },\n                {\n                    \"model_type\": \"PasspointOsuIcon\",\n                    \"iconWidth\": 32,\n                    \"iconHeight\": 32,\n                    \"languageCode\": \"fra\",\n                    \"iconLocale\": \"fr_CA\",\n                    \"iconName\": \"icon32fra\",\n                    \"filePath\": \"/tmp/icon32fra.png\",\n                    \"imageUrl\": \"https://localhost:9096/icon32fra.png\",\n                    \"hs20IconString\": \"32:32:fra:image/png:icon32fra:/tmp/icon32fra.png\"\n                },\n                {\n                    \"model_type\": \"PasspointOsuIcon\",\n                    \"iconWidth\": 32,\n                    \"iconHeight\": 32,\n                    \"languageCode\": \"eng\",\n                    \"iconLocale\": \"en_US\",\n                    \"iconName\": \"icon32usa\",\n                    \"filePath\": \"/tmp/icon32usa.png\",\n                    \"imageUrl\": \"https://localhost:9096/icon32usa.png\",\n                    \"hs20IconString\": \"32:32:eng:image/png:icon32usa:/tmp/icon32usa.png\"\n                }\n            ],\n            \"osuServerUri\": \"https://example.com/osu/telus\",\n            \"osuFriendlyName\": [\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"en_CA\",\n                    \"dupleIso3Language\": \"eng\",\n                    \"dupleName\": \"Example provider telus\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"eng:Example provider telus\"\n                },\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"fr_CA\",\n                    \"dupleIso3Language\": \"fra\",\n                    \"dupleName\": \"Exemple de fournisseur telus\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"fra:Exemple de fournisseur telus\"\n                }\n            ],\n            \"osuNaiStandalone\": \"anonymous@{{provider-2-domain-name}}\",\n            \"osuNaiShared\": \"anonymous@{{provider-2-domain-name}}\",\n            \"osuMethodList\": [\n                1,\n                0\n            ],\n            \"osuServiceDescription\": [\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"en_CA\",\n                    \"dupleIso3Language\": \"eng\",\n                    \"dupleName\": \"Example services telus\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"eng:Example services telus\"\n                },\n                {\n                    \"model_type\": \"PasspointDuple\",\n                    \"locale\": \"fr_CA\",\n                    \"dupleIso3Language\": \"fra\",\n                    \"dupleName\": \"Exemples de services telus\",\n                    \"defaultDupleSeparator\": \":\",\n                    \"asDuple\": \"fra:Exemples de services telus\"\n                }\n            ],\n            \"roamingOi\": [\n                11,\n                22,\n                33,\n                44\n            ],\n            \"profileType\": \"passpoint_osu_id_provider\"\n        },\n        \"childProfileIds\": []\n    }\n]"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/portal/profile",
@@ -3437,287 +3437,287 @@
 	],
 	"variable": [
 		{
-			"id": "acad7d77-4c9f-4cf1-996b-8a805ab1411f",
+			"id": "283327e9-8451-4760-9df6-5df7efdc3f1b",
 			"key": "baseUrl",
 			"value": "https://localhost:9091"
 		},
 		{
-			"id": "e0dae5fe-357f-4c44-a23b-62d351c0d408",
+			"id": "26bc9985-831e-49d1-9a12-67822ae31425",
 			"key": "access-token",
 			"value": "null"
 		},
 		{
-			"id": "3e4a627e-2579-45df-a36d-e758b4c7b4cd",
+			"id": "fc93d0d5-112d-451f-91c7-a6370bfdb9d5",
 			"key": "operator-id",
 			"value": "0"
 		},
 		{
-			"id": "c73f9c1c-4866-45f7-9f78-2c9695137c66",
+			"id": "7b2e97c3-0c48-4d2d-8cf1-db1ccf436aca",
 			"key": "operator-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "c648d075-0705-48ca-a608-b0a420be1833",
+			"id": "5f30bc81-116e-4be5-be24-40a8bc93622a",
 			"key": "operator-name",
 			"value": "Hotspot20-Operator"
 		},
 		{
-			"id": "064497bd-3b7a-4caf-9272-d592b068615a",
+			"id": "f9b2785a-b801-4df7-86a0-547681ab2f04",
 			"key": "venue-id",
 			"value": "0"
 		},
 		{
-			"id": "03d5c1fe-7412-4ed6-a695-e5b64fdc3492",
+			"id": "fc8ae05d-d0cf-41d3-9095-92e22b31c30a",
 			"key": "venue-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "645ba412-48b1-493f-b468-d398094766d0",
+			"id": "6b162287-1037-4ad9-abba-9186d50435ea",
 			"key": "venue-name",
 			"value": "Hotspot20-Venue"
 		},
 		{
-			"id": "8092ba04-f4c4-4eeb-9ec3-f1e7dc833df2",
+			"id": "37a44938-f320-4d9a-914a-439eaefb4eb1",
 			"key": "provider-id-1",
 			"value": "0"
 		},
 		{
-			"id": "3601ea30-9bcf-41be-9266-ac199a13761b",
+			"id": "0024f060-7dd1-4df3-9140-f2f6eeb851fd",
 			"key": "provider1-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "406ded33-e48e-4cdf-9d11-ea3e3f365e95",
+			"id": "2e125613-0d2a-4a09-978d-ac5f77dea7fd",
 			"key": "provider-name-1",
 			"value": "Hotspot20-OSU-Provider"
 		},
 		{
-			"id": "eee68df9-bb9c-4911-9cd9-b58f757fb924",
+			"id": "2473ef11-b7e4-4277-8805-6727f116c903",
 			"key": "provider-name-2",
 			"value": "Hotspot20-OSU-Provider-2"
 		},
 		{
-			"id": "c9ba9ef8-fb07-40d9-84b0-c714beaa99b3",
+			"id": "f9b9eec2-3356-463e-93ad-c724bd0ea446",
 			"key": "provider-id-2",
 			"value": "0"
 		},
 		{
-			"id": "7ba3f298-5c16-4abf-baae-bab3d8e915d8",
+			"id": "39266a92-9aa3-46d5-b883-7d8cec1b069a",
 			"key": "provider2-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "34e7e4de-96c7-4c0d-8aaa-09a893a78e3c",
+			"id": "a9872294-3386-4637-b52a-e7531a8a8135",
 			"key": "hotspot-id",
 			"value": "0"
 		},
 		{
-			"id": "cf539966-b085-4a2c-8596-3798eebb60df",
+			"id": "3502f5ab-19a4-45f7-bbe0-0012a0e0767f",
 			"key": "hotspot-name",
 			"value": "Hotspot20-Config"
 		},
 		{
-			"id": "3d13fb23-54a2-4eee-9e72-e97fc7f32bb1",
+			"id": "86051fe7-878b-4bed-b3b9-368f72e66987",
 			"key": "hotspot-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "262992e0-1769-4d02-8310-9a7704311886",
+			"id": "a4330afe-33f5-41d6-86c0-714c69e74a04",
 			"key": "osu-ssid-id",
 			"value": "0"
 		},
 		{
-			"id": "e8ab7895-37ea-4139-bd19-69945cc7952c",
+			"id": "0df127a9-315c-45df-b598-bf4b32c7a4de",
 			"key": "osu-ssid-name",
 			"value": "ssid-open"
 		},
 		{
-			"id": "5fa4c4bb-a8ea-4835-a090-f51e91b40765",
+			"id": "25ef4d52-abec-4d1d-81e9-b128098955dd",
 			"key": "profile-osu-ssid-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "43ab8a52-acf5-4bd5-98f1-039f94ba9fd9",
+			"id": "bd68ccf7-2c6b-4f66-a3cd-410519901832",
 			"key": "access-ssid-name",
 			"value": "ssid-access"
 		},
 		{
-			"id": "85160913-11cc-4bc2-9bd0-4d87fe0b7015",
+			"id": "ceb717e5-ce27-4fd2-9964-846b2d4e1046",
 			"key": "metrics-profile-id",
 			"value": "0"
 		},
 		{
-			"id": "bd253f8f-92ad-4a12-89cd-7aad667dbbb2",
+			"id": "93be4b52-447d-40fc-922f-d75e311df168",
 			"key": "metrics-profile-name",
 			"value": "Metrics-Profile-3-radios"
 		},
 		{
-			"id": "41e8f628-a8cc-4dc0-8f53-6d8d711402a7",
+			"id": "05bac698-b5fc-4006-82ca-7f7c88a79c62",
 			"key": "profile-metrics-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "04592378-c53d-4bf1-b16e-4d09e6eac646",
+			"id": "93a0e7e7-1a78-4041-b03d-f752b2689f73",
 			"key": "rf-profile-name",
 			"value": "TipWlan-rf"
 		},
 		{
-			"id": "ba914a38-bd42-4399-9665-bed8208009b0",
+			"id": "97ea1195-ceec-4db2-9705-5a6972917d48",
 			"key": "rf-profile-id",
 			"value": "0"
 		},
 		{
-			"id": "2490d9e6-8925-418b-a45b-d0d67a8ffda1",
+			"id": "53fc7de2-dcbf-451f-b193-417de3b7ed3b",
 			"key": "profile-rf-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "433ad5a8-a3f7-4e95-8f6f-345c6406eec7",
+			"id": "f61d5c49-2a83-4099-92a9-89116120d5e4",
 			"key": "profile-ap-id",
 			"value": "0"
 		},
 		{
-			"id": "1ad32e64-59e3-4dca-9358-92f65033f8fc",
+			"id": "8ebc6924-a58d-4801-b766-3a21e904a697",
 			"key": "profile-ap-name",
 			"value": "ApProfile-3-radios-mjh"
 		},
 		{
-			"id": "7c66547d-b137-48c5-b4b1-c69a4e8085bf",
+			"id": "d5e0efc9-5e1d-485a-be17-e2d03fe921ea",
 			"key": "profile-ap-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "24cfe853-ffda-4c73-a9b5-9aa6c818deb3",
+			"id": "f2d4c39e-468b-4c9a-8803-d26ca53eb260",
 			"key": "access-ssid-id",
 			"value": "0"
 		},
 		{
-			"id": "3f294fe6-9a75-4a30-92cd-463db1767819",
+			"id": "95d4ea85-8dc6-4dc4-bca3-85037a324a47",
 			"key": "profile-access-ssid-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "e13eb81a-436a-4204-ac5a-34db911cc4b0",
+			"id": "0d1b7143-3000-462f-a0eb-e45eb6aa7879",
 			"key": "equipment-last-modified-timestamp",
 			"value": "0"
 		},
 		{
-			"id": "099ab5e2-d1d5-476d-bfd0-7fab62cd7cd9",
+			"id": "52d7d32e-dc5a-4e4b-80d4-eba08e30b71b",
 			"key": "equipment-id",
 			"value": "1"
 		},
 		{
-			"id": "82522954-5baa-4c5c-8bb6-ea3cb7e04108",
+			"id": "69f1fe53-d9da-4ef6-9c92-8a16f3f4fcfe",
 			"key": "access-profile-radius-service-name",
 			"value": "Radius-Alternative-Profile"
 		},
 		{
-			"id": "4304b1ae-0e8f-4ec7-9e47-715f7420b231",
+			"id": "62ce1114-7a95-4875-a9ba-6ec07c803b8d",
 			"key": "access-profile-secure-mode",
 			"value": "wpa2EAP"
 		},
 		{
-			"id": "e80e1052-dd42-4c32-9770-52dd87e14e71",
+			"id": "7607c34c-c0a5-48ba-bea2-fb5fbe2dc30f",
 			"key": "radius-profile-id",
 			"value": "1"
 		},
 		{
-			"id": "3b3b5132-d131-4423-a7a8-784b82386822",
+			"id": "52cbe411-26d6-42f6-8f2c-da810736e1d2",
 			"key": "operator-domain-name",
 			"value": "telecominfraproject.atlassian.net"
 		},
 		{
-			"id": "a6d04f5e-18f5-4d4a-92c4-a498189808bc",
+			"id": "1cd076ba-4959-4f79-bebe-8898a1c81412",
 			"key": "provider-1-domain-name",
 			"value": "rogers.com"
 		},
 		{
-			"id": "7c8e13e0-6a79-4ae3-96b6-4d74b2c2b53d",
+			"id": "ffc14fb1-69f0-4182-b560-47964866bcc4",
 			"key": "provider-2-domain-name",
 			"value": "telus.com"
 		},
 		{
-			"id": "79a170c9-a779-456d-a3bc-a22a6ee41d94",
+			"id": "5cc1dbca-66ae-40fe-8d5a-2ab801bfd9f9",
 			"key": "access-profile-radius-accounting-service-name",
 			"value": "Radius-Accounting-Profile"
 		},
 		{
-			"id": "fb3cf054-80fd-4740-95b2-07c40db96c30",
+			"id": "19f1481b-458c-4c74-a023-bcf2a2e5194d",
 			"key": "radius-accounting-profile-id",
 			"value": "2"
 		},
 		{
-			"id": "4ca1e025-9fc9-4eba-8921-fb66637b8c31",
+			"id": "d3caf511-36a4-4f15-ae44-311c88a505f3",
 			"key": "profile-radius-last-modified",
 			"value": ""
 		},
 		{
-			"id": "933e6c9f-3106-440b-8956-15efb201d09e",
+			"id": "c0337cdd-9f76-43cf-bab7-e30395402aca",
 			"key": "profile-radius-accounting-last-modified",
 			"value": ""
 		},
 		{
-			"id": "45df022f-b68b-4ce3-86fd-c113aa08d858",
+			"id": "292570f7-2dcf-4de2-9ef8-dc71a0d70b0a",
 			"key": "radius-auth-port",
 			"value": "1812"
 		},
 		{
-			"id": "ce791cd4-10b8-43e3-93a9-6749d1ca2ddc",
+			"id": "c310f788-41ef-4056-a0e7-e672f8805d09",
 			"key": "radius-accounting-auth-port",
 			"value": "1813"
 		},
 		{
-			"id": "e06faff5-5684-4a73-bbfc-c08f0e0a6533",
+			"id": "eba5a42a-dcfb-41ce-ae19-392a2369adc5",
 			"key": "radius-accounting-service-region-name",
 			"value": "Ottawa"
 		},
 		{
-			"id": "73872397-325e-4129-8a82-a93ad923fe7e",
+			"id": "0cc0b614-e08f-4810-98f1-070c6792377d",
 			"key": "radius-service-region-name",
 			"value": "Ottawa"
 		},
 		{
-			"id": "264d69b3-0e3a-4d5c-82c3-85cda3bf0651",
+			"id": "32a16270-f563-4509-acef-7d1e1b36b0db",
 			"key": "radius-service-ip",
 			"value": "192.168.1.101"
 		},
 		{
-			"id": "4d497d58-4156-42ca-9eaf-b7ed11e866cc",
+			"id": "5ce410b8-7573-47d2-8eec-a95385eaf9f1",
 			"key": "radius-accounting-service-ip",
 			"value": "192.168.1.101"
 		},
 		{
-			"id": "c7198ef9-c5a1-4571-a92b-1b7182dd34fc",
+			"id": "c4d19e54-cd3e-4c79-ba39-0e89903da709",
 			"key": "equipment-location-id",
 			"value": "8"
 		},
 		{
-			"id": "3b452914-de63-4725-b27f-9f531b7a4063",
+			"id": "69f59973-a9d2-4257-8b1e-e650d3a6e5b4",
 			"key": "equipment-inventory-id",
 			"value": "Open_AP_21P10C68818122"
 		},
 		{
-			"id": "b09c7f42-41f8-40c2-a45d-16419c3159de",
+			"id": "599fbf4d-5313-4599-8748-398c2b676f87",
 			"key": "equipment-model",
 			"value": "EA8300-CA"
 		},
 		{
-			"id": "ed43ffb6-6726-4f34-b267-60dbaadcb37d",
+			"id": "48922694-b86a-4d81-b020-1f055801f229",
 			"key": "equipment-serial-number",
 			"value": "21P10C68818122"
 		},
 		{
-			"id": "09104e35-a3ad-4e65-983c-cd81e7bf7b4b",
+			"id": "fe067bd7-b442-4225-82c3-8061b7b6ee07",
 			"key": "equipment-forward-mode",
 			"value": "BRIDGE"
 		},
 		{
-			"id": "13106e00-fac8-496e-9df6-9c9613dbe54d",
+			"id": "a870067e-75cf-432c-9695-bf64cb5e2830",
 			"key": "from_timestamp",
 			"value": "0"
 		},
 		{
-			"id": "028cce5d-473b-4554-ab25-cc882b959b34",
+			"id": "611401e7-8782-49a7-aa44-1392bd04aad0",
 			"key": "to_timestamp",
 			"value": "0"
 		}
