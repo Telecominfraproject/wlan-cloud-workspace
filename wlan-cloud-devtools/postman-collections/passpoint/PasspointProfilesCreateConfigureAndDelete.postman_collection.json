@@ -385,7 +385,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{osu-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{osu-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is2dot4GHz\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"open\",\n            \"vlanId\": 1,\n            \"keyStr\": null,\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": null,\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\"\n        },\n        \"childProfileIds\": [\n        ]\n    }\n]"
+							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{osu-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{osu-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is2dot4GHz\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"open\",\n            \"vlanId\": 1,\n            \"keyStr\": null,\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": null,\n            \"radiusAccountingServiceName\": null,\n            \"radiusAcountingServiceInterval\": null,\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\"\n        },\n        \"childProfileIds\": []\n    }\n]"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/portal/profile",
@@ -478,6 +478,7 @@
 									"    console.log(jsonData.id);",
 									"    pm.collectionVariables.set(\"access-ssid-id\", jsonData.id,Number);",
 									"    pm.collectionVariables.set(\"profile-access-ssid-last-modified\", jsonData.lastModifiedTimestamp);",
+									"    pm.collectionVariables.set(\"access-profile-radius-accounting-service-interval\", jsonData.details.radiusAcountingServiceInterval,Number)",
 									"});",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -497,7 +498,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{access-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{access-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is5GHzU\",\n                \"is5GHzL\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"{{access-profile-secure-mode}}\",\n            \"vlanId\": 1,\n            \"keyStr\": \"testing123\",\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": \"{{access-profile-radius-service-name}}\",\n            \"radiusAccountingServiceName\": \"{{access-profile-radius-accounting-service-name}}\",\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\"\n        },\n        \"childProfileIds\": [\n        ]\n    }\n]\n"
+							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{access-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{access-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is5GHzU\",\n                \"is5GHzL\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"{{access-profile-secure-mode}}\",\n            \"vlanId\": 1,\n            \"keyStr\": \"testing123\",\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": \"{{access-profile-radius-service-name}}\",\n            \"radiusAccountingServiceName\": \"{{access-profile-radius-accounting-service-name}}\",\n            \"radiusAcountingServiceInterval\": {{access-profile-radius-accounting-service-interval}},\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\"\n        },\n        \"childProfileIds\": []\n    }\n]"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/portal/profile",
@@ -1169,7 +1170,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"id\": {{osu-ssid-id}},\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{osu-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{osu-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is2dot4GHz\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"open\",\n            \"vlanId\": 1,\n            \"keyStr\": null,\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": null,\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\"\n        },\n        \"childProfileIds\": [\n            {{hotspot-id}}\n        ],\n        \"lastModifiedTimestamp\": {{profile-osu-ssid-last-modified}}\n    }\n]"
+							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"id\": {{osu-ssid-id}},\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{osu-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{osu-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is2dot4GHz\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"open\",\n            \"vlanId\": 1,\n            \"keyStr\": null,\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": null,\n            \"radiusAccountingServiceName\": null,\n            \"radiusAcountingServiceInterval\": null,\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\"\n        },\n        \"childProfileIds\": [\n            {{hotspot-id}}\n        ],\n        \"lastModifiedTimestamp\": {{profile-osu-ssid-last-modified}}\n    }\n]"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/portal/profile",
@@ -1262,6 +1263,7 @@
 									"    console.log(jsonData.id);",
 									"    pm.collectionVariables.set(\"access-ssid-id\", jsonData.id,Number);",
 									"    pm.collectionVariables.set(\"profile-access-ssid-last-modified\", jsonData.lastModifiedTimestamp);",
+									"    pm.collectionVariables.set(\"access-profile-radius-accounting-service-interval\", jsonData.details.radiusAcountingServiceInterval,Number)",
 									"});",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1281,7 +1283,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"id\": {{access-ssid-id}},\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{access-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{access-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is5GHzU\",\n                \"is5GHzL\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"{{access-profile-secure-mode}}\",\n            \"vlanId\": 1,\n            \"keyStr\": \"testing123\",\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": \"{{access-profile-radius-service-name}}\",\n            \"radiusAccountingServiceName\": \"{{access-profile-radius-accounting-service-name}}\",\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\"\n        },\n        \"childProfileIds\": [\n            {{hotspot-id}}\n        ],\n        \"lastModifiedTimestamp\": {{profile-access-ssid-last-modified}}\n    }\n]"
+							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"id\": {{access-ssid-id}},\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{access-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{access-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is5GHzU\",\n                \"is5GHzL\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"{{access-profile-secure-mode}}\",\n            \"vlanId\": 1,\n            \"keyStr\": \"testing123\",\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": \"{{access-profile-radius-service-name}}\",\n            \"radiusAccountingServiceName\": \"{{access-profile-radius-accounting-service-name}}\",\n            \"radiusAcountingServiceInterval\": {{access-profile-radius-accounting-service-interval}},\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\"\n        },\n        \"childProfileIds\": [\n            {{hotspot-id}}\n        ],\n        \"lastModifiedTimestamp\": {{profile-access-ssid-last-modified}}\n    }\n]"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/portal/profile",
@@ -3437,289 +3439,294 @@
 	],
 	"variable": [
 		{
-			"id": "283327e9-8451-4760-9df6-5df7efdc3f1b",
+			"id": "ede593ea-cc70-401e-8afc-f2aa39d9940a",
 			"key": "baseUrl",
 			"value": "https://localhost:9091"
 		},
 		{
-			"id": "26bc9985-831e-49d1-9a12-67822ae31425",
+			"id": "28b196dd-3bf2-46a6-a644-edf97d4086f8",
 			"key": "access-token",
 			"value": "null"
 		},
 		{
-			"id": "fc93d0d5-112d-451f-91c7-a6370bfdb9d5",
+			"id": "b04ea3e3-7daf-462b-a227-188f826dcd54",
 			"key": "operator-id",
 			"value": "0"
 		},
 		{
-			"id": "7b2e97c3-0c48-4d2d-8cf1-db1ccf436aca",
+			"id": "4a2365cd-a781-424f-9644-96cd1db6e416",
 			"key": "operator-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "5f30bc81-116e-4be5-be24-40a8bc93622a",
+			"id": "9ca1fcb1-1c41-4aa7-9355-253d9f83129a",
 			"key": "operator-name",
 			"value": "Hotspot20-Operator"
 		},
 		{
-			"id": "f9b2785a-b801-4df7-86a0-547681ab2f04",
+			"id": "83a094e1-c0e3-4bf4-b2ec-469cc105ec07",
 			"key": "venue-id",
 			"value": "0"
 		},
 		{
-			"id": "fc8ae05d-d0cf-41d3-9095-92e22b31c30a",
+			"id": "22c53ef4-9c98-4697-8b6b-ccf50a079ec5",
 			"key": "venue-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "6b162287-1037-4ad9-abba-9186d50435ea",
+			"id": "08a1afed-303c-4510-bfac-126f8013c711",
 			"key": "venue-name",
 			"value": "Hotspot20-Venue"
 		},
 		{
-			"id": "37a44938-f320-4d9a-914a-439eaefb4eb1",
+			"id": "24fd45b4-c867-409e-a96f-50b90d830391",
 			"key": "provider-id-1",
 			"value": "0"
 		},
 		{
-			"id": "0024f060-7dd1-4df3-9140-f2f6eeb851fd",
+			"id": "9dc2749b-53af-4fa8-850b-aef1278b72f1",
 			"key": "provider1-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "2e125613-0d2a-4a09-978d-ac5f77dea7fd",
+			"id": "c5a78350-b85d-4bd8-838b-82763a9f6f4f",
 			"key": "provider-name-1",
 			"value": "Hotspot20-OSU-Provider"
 		},
 		{
-			"id": "2473ef11-b7e4-4277-8805-6727f116c903",
+			"id": "c618d1f1-a32b-49b5-b2d3-2c656d41160e",
 			"key": "provider-name-2",
 			"value": "Hotspot20-OSU-Provider-2"
 		},
 		{
-			"id": "f9b9eec2-3356-463e-93ad-c724bd0ea446",
+			"id": "45575cb1-a62c-4e27-bc40-ac2499e82a46",
 			"key": "provider-id-2",
 			"value": "0"
 		},
 		{
-			"id": "39266a92-9aa3-46d5-b883-7d8cec1b069a",
+			"id": "a00e0356-1461-4ae5-8c43-dd21328e6d62",
 			"key": "provider2-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "a9872294-3386-4637-b52a-e7531a8a8135",
+			"id": "63315d6c-f430-42db-9592-7cfbf04c395e",
 			"key": "hotspot-id",
 			"value": "0"
 		},
 		{
-			"id": "3502f5ab-19a4-45f7-bbe0-0012a0e0767f",
+			"id": "a1751ace-175c-4e25-9c05-938ddeaed679",
 			"key": "hotspot-name",
 			"value": "Hotspot20-Config"
 		},
 		{
-			"id": "86051fe7-878b-4bed-b3b9-368f72e66987",
+			"id": "e64e53d5-8239-4cb1-9cd5-5c3a10aa580c",
 			"key": "hotspot-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "a4330afe-33f5-41d6-86c0-714c69e74a04",
+			"id": "495f647d-b29a-49a1-a9d0-de324207bfe9",
 			"key": "osu-ssid-id",
 			"value": "0"
 		},
 		{
-			"id": "0df127a9-315c-45df-b598-bf4b32c7a4de",
+			"id": "47740227-f439-46fb-8ab4-09b2988d5af4",
 			"key": "osu-ssid-name",
 			"value": "ssid-open"
 		},
 		{
-			"id": "25ef4d52-abec-4d1d-81e9-b128098955dd",
+			"id": "b35667b5-2417-4f64-935e-60bb003e1a89",
 			"key": "profile-osu-ssid-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "bd68ccf7-2c6b-4f66-a3cd-410519901832",
+			"id": "4b6f611f-cef1-4ed8-8a3d-3405c815a4c6",
 			"key": "access-ssid-name",
 			"value": "ssid-access"
 		},
 		{
-			"id": "ceb717e5-ce27-4fd2-9964-846b2d4e1046",
+			"id": "aed7397a-048d-4b6c-bdf8-3bc082a84f70",
 			"key": "metrics-profile-id",
 			"value": "0"
 		},
 		{
-			"id": "93be4b52-447d-40fc-922f-d75e311df168",
+			"id": "41a787a2-3e5b-4aed-8338-4611905a2cac",
 			"key": "metrics-profile-name",
 			"value": "Metrics-Profile-3-radios"
 		},
 		{
-			"id": "05bac698-b5fc-4006-82ca-7f7c88a79c62",
+			"id": "58ac8670-3126-4a21-adac-04ca143d9682",
 			"key": "profile-metrics-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "93a0e7e7-1a78-4041-b03d-f752b2689f73",
+			"id": "cb1d5e05-6c98-4d01-ab5e-cb4fe0bd2c9f",
 			"key": "rf-profile-name",
 			"value": "TipWlan-rf"
 		},
 		{
-			"id": "97ea1195-ceec-4db2-9705-5a6972917d48",
+			"id": "cb721c0f-4e94-454e-8ca2-7fa5e003fff5",
 			"key": "rf-profile-id",
 			"value": "0"
 		},
 		{
-			"id": "53fc7de2-dcbf-451f-b193-417de3b7ed3b",
+			"id": "bd12ab2b-8a3c-4b19-b849-e83f687e7700",
 			"key": "profile-rf-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "f61d5c49-2a83-4099-92a9-89116120d5e4",
+			"id": "61d90616-6b3e-4dbf-a388-acd9df650f99",
 			"key": "profile-ap-id",
 			"value": "0"
 		},
 		{
-			"id": "8ebc6924-a58d-4801-b766-3a21e904a697",
+			"id": "d3d17b1a-e1d6-4ac6-9dca-6f2ba36d45af",
 			"key": "profile-ap-name",
 			"value": "ApProfile-3-radios-mjh"
 		},
 		{
-			"id": "d5e0efc9-5e1d-485a-be17-e2d03fe921ea",
+			"id": "1a2e126f-e006-4dec-8f03-8a92a44e5d85",
 			"key": "profile-ap-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "f2d4c39e-468b-4c9a-8803-d26ca53eb260",
+			"id": "1efb8436-652b-4706-9577-a6f5287cf8f1",
 			"key": "access-ssid-id",
 			"value": "0"
 		},
 		{
-			"id": "95d4ea85-8dc6-4dc4-bca3-85037a324a47",
+			"id": "571ceb1d-8fce-43d5-badb-9183c7db2868",
 			"key": "profile-access-ssid-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "0d1b7143-3000-462f-a0eb-e45eb6aa7879",
+			"id": "cdb4140f-b796-45cc-96d5-2f30533d4d3f",
 			"key": "equipment-last-modified-timestamp",
 			"value": "0"
 		},
 		{
-			"id": "52d7d32e-dc5a-4e4b-80d4-eba08e30b71b",
+			"id": "762dcdc1-7a1f-47d2-812c-c6780b05978d",
 			"key": "equipment-id",
 			"value": "1"
 		},
 		{
-			"id": "69f1fe53-d9da-4ef6-9c92-8a16f3f4fcfe",
+			"id": "846d0d2a-e396-4c3f-bc80-3a91511ba07f",
 			"key": "access-profile-radius-service-name",
 			"value": "Radius-Alternative-Profile"
 		},
 		{
-			"id": "62ce1114-7a95-4875-a9ba-6ec07c803b8d",
+			"id": "a298d561-2790-4966-9245-d2ffc801fd6d",
 			"key": "access-profile-secure-mode",
 			"value": "wpa2EAP"
 		},
 		{
-			"id": "7607c34c-c0a5-48ba-bea2-fb5fbe2dc30f",
+			"id": "7075c553-465f-49f8-8346-e68e3239b50b",
 			"key": "radius-profile-id",
 			"value": "1"
 		},
 		{
-			"id": "52cbe411-26d6-42f6-8f2c-da810736e1d2",
+			"id": "47251bd3-0c99-4f3b-a6e7-21cfff02daff",
 			"key": "operator-domain-name",
 			"value": "telecominfraproject.atlassian.net"
 		},
 		{
-			"id": "1cd076ba-4959-4f79-bebe-8898a1c81412",
+			"id": "ae0d26df-4bd7-4156-b1c2-909decc779fa",
 			"key": "provider-1-domain-name",
 			"value": "rogers.com"
 		},
 		{
-			"id": "ffc14fb1-69f0-4182-b560-47964866bcc4",
+			"id": "41a044ad-a143-4a76-8fcc-15bedcd067d5",
 			"key": "provider-2-domain-name",
 			"value": "telus.com"
 		},
 		{
-			"id": "5cc1dbca-66ae-40fe-8d5a-2ab801bfd9f9",
+			"id": "a15dbcfb-fd6e-486f-8a07-a6bbf0216d0e",
 			"key": "access-profile-radius-accounting-service-name",
 			"value": "Radius-Accounting-Profile"
 		},
 		{
-			"id": "19f1481b-458c-4c74-a023-bcf2a2e5194d",
+			"id": "3213ac81-73df-4bb1-b2bd-592b9e294fc9",
 			"key": "radius-accounting-profile-id",
 			"value": "2"
 		},
 		{
-			"id": "d3caf511-36a4-4f15-ae44-311c88a505f3",
+			"id": "7f173a00-f516-4c22-a6ed-70f88afa3548",
 			"key": "profile-radius-last-modified",
 			"value": ""
 		},
 		{
-			"id": "c0337cdd-9f76-43cf-bab7-e30395402aca",
+			"id": "739791e4-90a2-4506-9945-2e35578730af",
 			"key": "profile-radius-accounting-last-modified",
 			"value": ""
 		},
 		{
-			"id": "292570f7-2dcf-4de2-9ef8-dc71a0d70b0a",
+			"id": "c56753cb-d761-4856-9ea1-4544814e32d7",
 			"key": "radius-auth-port",
 			"value": "1812"
 		},
 		{
-			"id": "c310f788-41ef-4056-a0e7-e672f8805d09",
+			"id": "e44f5a7a-37b9-4981-aa76-d041b4a19fa8",
 			"key": "radius-accounting-auth-port",
 			"value": "1813"
 		},
 		{
-			"id": "eba5a42a-dcfb-41ce-ae19-392a2369adc5",
+			"id": "cbabfd9f-cf36-4c03-892c-ec192aa50d65",
 			"key": "radius-accounting-service-region-name",
 			"value": "Ottawa"
 		},
 		{
-			"id": "0cc0b614-e08f-4810-98f1-070c6792377d",
+			"id": "ca0465d3-578d-4d08-b287-d66a11d4cfe6",
 			"key": "radius-service-region-name",
 			"value": "Ottawa"
 		},
 		{
-			"id": "32a16270-f563-4509-acef-7d1e1b36b0db",
+			"id": "ac7a01da-5926-45e9-9061-d8462b5de4df",
 			"key": "radius-service-ip",
 			"value": "192.168.1.101"
 		},
 		{
-			"id": "5ce410b8-7573-47d2-8eec-a95385eaf9f1",
+			"id": "2c7b18f5-faf6-49df-bb1f-06a6ad6ce354",
 			"key": "radius-accounting-service-ip",
 			"value": "192.168.1.101"
 		},
 		{
-			"id": "c4d19e54-cd3e-4c79-ba39-0e89903da709",
+			"id": "ea19b92a-4eb2-4b83-a5d3-a82f1d46f5bf",
 			"key": "equipment-location-id",
 			"value": "8"
 		},
 		{
-			"id": "69f59973-a9d2-4257-8b1e-e650d3a6e5b4",
+			"id": "134937b1-0a8c-4741-bb6c-aa89bb108504",
 			"key": "equipment-inventory-id",
 			"value": "Open_AP_21P10C68818122"
 		},
 		{
-			"id": "599fbf4d-5313-4599-8748-398c2b676f87",
+			"id": "ae6ca3ec-c0ee-46fb-9230-e5ccfb0f4c4b",
 			"key": "equipment-model",
 			"value": "EA8300-CA"
 		},
 		{
-			"id": "48922694-b86a-4d81-b020-1f055801f229",
+			"id": "b998dc5a-ee77-41d0-8d27-7051d8e69b1e",
 			"key": "equipment-serial-number",
 			"value": "21P10C68818122"
 		},
 		{
-			"id": "fe067bd7-b442-4225-82c3-8061b7b6ee07",
+			"id": "9ecb08ac-fdc0-4784-a969-1db4721bd7d8",
 			"key": "equipment-forward-mode",
 			"value": "BRIDGE"
 		},
 		{
-			"id": "a870067e-75cf-432c-9695-bf64cb5e2830",
+			"id": "f5af1408-093e-4a3f-aa60-f2a316e75542",
 			"key": "from_timestamp",
 			"value": "0"
 		},
 		{
-			"id": "611401e7-8782-49a7-aa44-1392bd04aad0",
+			"id": "c61a00e6-4067-44cd-ab86-678bdfe8a078",
 			"key": "to_timestamp",
 			"value": "0"
+		},
+		{
+			"id": "d2dafda1-022b-4f35-8748-078c897797a9",
+			"key": "access-profile-radius-accounting-service-interval",
+			"value": "300"
 		}
 	],
 	"protocolProfileBehavior": {}
