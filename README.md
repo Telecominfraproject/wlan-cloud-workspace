@@ -4,7 +4,8 @@ Aggregation of repositories to simplify development environment.
 Build instructions:
 * make sure that java SDK 13+ is installed
 * make sure maven is installed
-* configure maven settings.xml with repository credentials
+* configure maven settings.xml with repository credentials:
+  copy [maven_settings_template.xml](https://github.com/Telecominfraproject/wlan-cloud-workspace/blob/master/.github/workflows/maven_settings_template.xml) into ~/.m2/settings.xml and replace ${env.MAVEN_REPO_USERNAME} / ${env.MAVEN_REPO_PASSWORD} with **tip-read**
 * $ git submodule update --init
 * $ mvn -B --file all-modules-build/pom.xml clean install
 
