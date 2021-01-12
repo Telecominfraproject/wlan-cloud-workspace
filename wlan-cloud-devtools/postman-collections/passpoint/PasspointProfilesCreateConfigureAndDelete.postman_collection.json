@@ -15,7 +15,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ebffec91-e6bc-4691-a9b0-c2a8ef8d9700",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -135,7 +134,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9f56f0a8-8fff-4ed6-8054-16028ff0b818",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -143,9 +141,20 @@
 									"pm.test(\"Get radius server id\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    console.log(jsonData.id);",
+									"    pm.collectionVariables.set(\"access-profile-radius-service-name\", jsonData.name);",
 									"    pm.collectionVariables.set(\"radius-profile-id\", jsonData.id,Number);",
 									"    pm.collectionVariables.set(\"profile-radius-last-modified\", jsonData.lastModifiedTimestamp);",
 									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"access-profile-radius-service-name\", \"radius-profile-\"+'{{$isoTimestamp}}');",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -247,7 +256,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "54bfa912-b31d-4cb4-a170-36f3a3a172bf",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -255,9 +263,20 @@
 									"pm.test(\"Get radius server id\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    console.log(jsonData.id);",
+									"    pm.collectionVariables.set(\"access-profile-radius-accounting-service-name\", jsonData.name);",
 									"    pm.collectionVariables.set(\"radius-accounting-profile-id\", jsonData.id,Number);",
 									"    pm.collectionVariables.set(\"profile-radius-accounting-last-modified\", jsonData.lastModifiedTimestamp);",
 									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"    pm.collectionVariables.set(\"access-profile-radius-accounting-service-name\", \"radius-accounting-profile-\"+'{{$isoTimestamp}}');",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -359,17 +378,27 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d5da980a-e699-4ab3-a6a4-f2cf5dd187f6",
 								"exec": [
 									"pm.test(\"Get osu-ssid id\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    console.log(jsonData.id);",
+									"        pm.collectionVariables.set(\"osu-ssid-name\", jsonData.name);",
 									"    pm.collectionVariables.set(\"osu-ssid-id\", jsonData.id,Number);",
 									"    pm.collectionVariables.set(\"profile-osu-ssid-last-modified\", jsonData.lastModifiedTimestamp);",
 									"});",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"        pm.collectionVariables.set(\"osu-ssid-name\", \"osu-ssid-profile-\"+'{{$isoTimestamp}}');",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -385,7 +414,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{osu-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{osu-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is2dot4GHz\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"open\",\n            \"vlanId\": 1,\n            \"keyStr\": null,\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": null,\n            \"radiusAccountingServiceName\": null,\n            \"radiusAcountingServiceInterval\": null,\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\",\n            \"radiusClientConfiguration\": {\n                \"model_type\": \"RadiusNasConfiguration\",\n                \"nasClientId\": \"DEFAULT\",\n                \"nasClientIp\": \"WAN_IP\",\n                \"userDefinedNasId\": null,\n                \"userDefinedNasIp\": null,\n                \"operatorId\": null\n            }\n        },\n        \"childProfileIds\": []\n    }\n]"
+							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{osu-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{osu-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is2dot4GHz\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"open\",\n            \"vlanId\": 1,\n            \"keyStr\": null,\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": null,\n            \"radiusAccountingServiceName\": null,\n            \"radiusAcountingServiceInterval\": null,\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\",\n            \"radiusClientConfiguration\": {\n                \"model_type\": \"RadiusNasConfiguration\",\n                \"nasClientId\": \"DEFAULT\",\n                \"nasClientIp\": \"WAN_IP\",\n                \"userDefinedNasId\": null,\n                \"userDefinedNasIp\": null,\n                \"operatorId\": \"{{$randomUserName}}\"\n            }\n        },\n        \"childProfileIds\": []\n    }\n]"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/portal/profile",
@@ -471,11 +500,12 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "547ece43-9e82-47d1-b351-edc0ca1ee2d7",
 								"exec": [
 									"pm.test(\"Get access-ssid id\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    console.log(jsonData.id);",
+									"        pm.collectionVariables.set(\"access-ssid-name\", jsonData.name,Number);",
+									"",
 									"    pm.collectionVariables.set(\"access-ssid-id\", jsonData.id,Number);",
 									"    pm.collectionVariables.set(\"profile-access-ssid-last-modified\", jsonData.lastModifiedTimestamp);",
 									"    pm.collectionVariables.set(\"access-profile-radius-accounting-service-interval\", jsonData.details.radiusAcountingServiceInterval,Number)",
@@ -483,6 +513,16 @@
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"        pm.collectionVariables.set(\"access-ssid-name\", \"access-ssid-profile-\"+'{{$isoTimestamp}}');",
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -498,7 +538,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{access-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{access-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is5GHzU\",\n                \"is5GHzL\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"{{access-profile-secure-mode}}\",\n            \"vlanId\": 1,\n            \"keyStr\": \"testing123\",\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": \"{{access-profile-radius-service-name}}\",\n            \"radiusAccountingServiceName\": \"{{access-profile-radius-accounting-service-name}}\",\n            \"radiusAcountingServiceInterval\": {{access-profile-radius-accounting-service-interval}},\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\",\n            \"radiusClientConfiguration\": {\n                \"model_type\": \"RadiusNasConfiguration\",\n                \"nasClientId\": \"DEFAULT\",\n                \"nasClientIp\": \"WAN_IP\",\n                \"userDefinedNasId\": null,\n                \"userDefinedNasIp\": null,\n                \"operatorId\": \"test\"\n            }\n        },\n        \"childProfileIds\": []\n    }\n]"
+							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{access-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{access-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is5GHzU\",\n                \"is5GHzL\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"{{access-profile-secure-mode}}\",\n            \"vlanId\": 1,\n            \"keyStr\": \"testing123\",\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": \"{{access-profile-radius-service-name}}\",\n            \"radiusAccountingServiceName\": \"{{access-profile-radius-accounting-service-name}}\",\n            \"radiusAcountingServiceInterval\": {{access-profile-radius-accounting-service-interval}},\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\",\n            \"radiusClientConfiguration\": {\n                \"model_type\": \"RadiusNasConfiguration\",\n                \"nasClientId\": \"DEFAULT\",\n                \"nasClientIp\": \"WAN_IP\",\n                \"userDefinedNasId\": null,\n                \"userDefinedNasIp\": null,\n                \"operatorId\": \"{{$randomUserName}}\"\n            }\n        },\n        \"childProfileIds\": []\n    }\n]"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/portal/profile",
@@ -584,7 +624,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c4abce1f-a2d7-4251-9619-d6159c025c75",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -592,9 +631,19 @@
 									"pm.test(\"Get venue id\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    console.log(jsonData.id);",
+									"    pm.collectionVariables.set(\"venue-name\", jsonData.name);",
 									"    pm.collectionVariables.set(\"venue-id\", jsonData.id,Number);",
 									"    pm.collectionVariables.set(\"venue-last-modified\", jsonData.lastModifiedTimestamp);",
 									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"venue-name\", \"venue-profile-\"+'{{$isoTimestamp}}');"
 								],
 								"type": "text/javascript"
 							}
@@ -696,7 +745,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "49c0bc63-e3f2-4e5e-8eaa-6a8a5b0a5cef",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -704,9 +752,19 @@
 									"pm.test(\"Get operator id\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    console.log(jsonData.id);",
+									"    pm.collectionVariables.set(\"operator-name\", jsonData.name);",
 									"    pm.collectionVariables.set(\"operator-id\", jsonData.id,Number);",
 									"    pm.collectionVariables.set(\"operator-last-modified\", jsonData.lastModifiedTimestamp);",
 									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"operator-name\", \"operator-profile-\"+'{{$isoTimestamp}}');"
 								],
 								"type": "text/javascript"
 							}
@@ -808,17 +866,26 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4bfac3f7-6296-4f2a-8db4-8a5a0df1e7c9",
 								"exec": [
 									"pm.test(\"Get provider-1 id\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    console.log(jsonData.id);",
+									"    pm.collectionVariables.set(\"provider-name-1\", jsonData.name);",
 									"    pm.collectionVariables.set(\"provider-id-1\", jsonData.id,Number);",
 									"    pm.collectionVariables.set(\"provider1-last-modified\", jsonData.lastModifiedTimestamp);",
 									"});",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"provider-name-1\", \"provider1-profile-\"+'{{$isoTimestamp}}');"
 								],
 								"type": "text/javascript"
 							}
@@ -920,17 +987,26 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "44989480-0082-47be-8659-af40a815c61d",
 								"exec": [
 									"pm.test(\"Get provider-2 id\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    console.log(jsonData.id);",
+									"    pm.collectionVariables.set(\"provider-name-2\", jsonData.name);",
 									"    pm.collectionVariables.set(\"provider-id-2\", jsonData.id,Number);",
 									"    pm.collectionVariables.set(\"provider2-last-modified\", jsonData.lastModifiedTimestamp);",
 									"});",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"provider-name-2\", \"provider2-profile-\"+'{{$isoTimestamp}}');"
 								],
 								"type": "text/javascript"
 							}
@@ -1032,17 +1108,26 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db4c839c-a445-4030-b3b5-a8f4174b6c25",
 								"exec": [
 									"pm.test(\"Get hotspot id\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    console.log(jsonData.id);",
+									"    pm.collectionVariables.set(\"hotspot-name\", jsonData.name);",
 									"    pm.collectionVariables.set(\"hotspot-id\", jsonData.id,Number);",
 									"    pm.collectionVariables.set(\"hotspot-last-modified\", jsonData.lastModifiedTimestamp);",
 									"});",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"hotspot-name\", \"hotspot20-profile-\"+'{{$isoTimestamp}}');"
 								],
 								"type": "text/javascript"
 							}
@@ -1058,7 +1143,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"passpoint\",\n        \"name\": \"{{hotspot-name}}\",\n        \"details\": {\n            \"model_type\": \"PasspointProfile\",\n            \"enableInterworkingAndHs20\": true,\n            \"hessid\": null,\n            \"additionalStepsRequiredForAccess\": 0,\n            \"deauthRequestTimeout\": 0,\n            \"operatingClass\": 0,\n            \"termsAndConditionsFile\": {\n                \"model_type\": \"ManagedFileInfo\",\n                \"md5checksum\": null,\n                \"lastModifiedTimestamp\": null,\n                \"apExportUrl\": \"https://localhost:9091/filestore/termsAndConditions\",\n                \"fileCategory\": \"ExternalPolicyConfiguration\",\n                \"fileType\": \"TEXT\",\n                \"altSlot\": false\n            },\n            \"whitelistDomain\": null,\n            \"emergencyServicesReachable\": true,\n            \"unauthenticatedEmergencyServiceAccessible\": false,\n            \"internetConnectivity\": true,\n            \"connectionCapabilitySet\": [\n                {\n                    \"model_type\": \"PasspointConnectionCapability\",\n                    \"connectionCapabilitiesPortNumber\": 8888,\n                    \"connectionCapabilitiesIpProtocol\": \"TCP\",\n                    \"connectionCapabilitiesStatus\": \"open\"\n                }\n            ],\n            \"ipAddressTypeAvailability\": \"public_IPv4_address_available\",\n            \"qosMapSetConfiguration\": null,\n            \"apGeospatialLocation\": null,\n            \"apCivicLocation\": null,\n            \"apPublicLocationIdUri\": null,\n            \"gasAddr3Behaviour\": \"p2pSpecWorkaroundFromRequest\",\n            \"anqpDomainId\": 1234,\n            \"disableDownstreamGroupAddressedForwarding\": false,\n            \"enable2pt4GHz\": true,\n            \"enable5GHz\": true,\n            \"associatedAccessSsidProfileIds\": [\n                {{access-ssid-id}}\n            ],\n            \"osuSsidProfileId\": {{osu-ssid-id}},\n            \"passpointOperatorProfileId\": {{operator-id}},\n            \"passpointVenueProfileId\": {{venue-id}},\n            \"passpointOsuProviderProfileIds\": [\n                {{provider-id-2}},\n                {{provider-id-1}}\n            ],\n            \"profileType\": \"passpoint\"\n        },\n        \"childProfileIds\": [\n            {{operator-id}},\n            {{venue-id}},\n            {{provider-id-1}},\n            {{provider-id-2}}\n        ]\n    }\n]\n\n{\n    \"model_type\": \"Profile\",\n    \"id\": 24,\n    \"customerId\": 2,\n    \"profileType\": \"passpoint\",\n    \"name\": \"TipWlan-Hotspot20-Config\",\n    \"details\": {\n        \"model_type\": \"PasspointProfile\",\n        \"enableInterworkingAndHs20\": true,\n        \"hessid\": null,\n        \"passpointAccessNetworkType\": \"free_public_network\",\n        \"passpointNetworkAuthenticationType\": \"acceptance_of_terms_and_conditions\",\n        \"additionalStepsRequiredForAccess\": 0,\n        \"deauthRequestTimeout\": 0,\n        \"operatingClass\": 0,\n        \"termsAndConditionsFile\": {\n            \"model_type\": \"ManagedFileInfo\",\n            \"md5checksum\": null,\n            \"lastModifiedTimestamp\": null,\n            \"apExportUrl\": \"https://localhost:9091/filestore/termsAndConditions\",\n            \"fileCategory\": \"ExternalPolicyConfiguration\",\n            \"fileType\": \"TEXT\",\n            \"altSlot\": false\n        },\n        \"whitelistDomain\": null,\n        \"emergencyServicesReachable\": true,\n        \"unauthenticatedEmergencyServiceAccessible\": false,\n        \"internetConnectivity\": true,\n        \"connectionCapabilitySet\": [\n            {\n                \"model_type\": \"PasspointConnectionCapability\",\n                \"connectionCapabilitiesPortNumber\": 8888,\n                \"connectionCapabilitiesIpProtocol\": \"TCP\",\n                \"connectionCapabilitiesStatus\": \"open\"\n            }\n        ],\n        \"ipAddressTypeAvailability\": \"public_IPv4_address_available\",\n        \"qosMapSetConfiguration\": null,\n        \"apGeospatialLocation\": null,\n        \"apCivicLocation\": null,\n        \"apPublicLocationIdUri\": null,\n        \"gasAddr3Behaviour\": \"p2pSpecWorkaroundFromRequest\",\n        \"anqpDomainId\": 1234,\n        \"disableDownstreamGroupAddressedForwarding\": false,\n        \"enable2pt4GHz\": true,\n        \"enable5GHz\": true,\n        \"associatedAccessSsidProfileIds\": [\n            15\n        ],\n        \"osuSsidProfileId\": 16,\n        \"passpointOperatorProfileId\": 17,\n        \"passpointVenueProfileId\": 18,\n        \"passpointOsuProviderProfileIds\": [\n            19,\n            20\n        ],\n        \"accessNetworkType\": \"free_public_network\",\n        \"networkAuthenticationType\": \"acceptance_of_terms_and_conditions\",\n        \"profileType\": \"passpoint\"\n    },\n    \"createdTimestamp\": 1606517691089,\n    \"lastModifiedTimestamp\": 1606517691089,\n    \"childProfileIds\": [\n        17,\n        18,\n        19,\n        20\n    ]\n}"
+							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"passpoint\",\n        \"name\": \"{{hotspot-name}}\",\n        \"details\": {\n            \"model_type\": \"PasspointProfile\",\n            \"enableInterworkingAndHs20\": true,\n            \"hessid\": null,\n            \"additionalStepsRequiredForAccess\": 0,\n            \"deauthRequestTimeout\": 0,\n            \"operatingClass\": 0,\n            \"termsAndConditionsFile\": {\n                \"model_type\": \"ManagedFileInfo\",\n                \"md5checksum\": null,\n                \"lastModifiedTimestamp\": null,\n                \"apExportUrl\": \"https://localhost:9091/filestore/termsAndConditions\",\n                \"fileCategory\": \"ExternalPolicyConfiguration\",\n                \"fileType\": \"TEXT\",\n                \"altSlot\": false\n            },\n            \"whitelistDomain\": null,\n            \"emergencyServicesReachable\": true,\n            \"unauthenticatedEmergencyServiceAccessible\": false,\n            \"internetConnectivity\": true,\n            \"connectionCapabilitySet\": [\n                {\n                    \"model_type\": \"PasspointConnectionCapability\",\n                    \"connectionCapabilitiesPortNumber\": 8888,\n                    \"connectionCapabilitiesIpProtocol\": \"TCP\",\n                    \"connectionCapabilitiesStatus\": \"open\"\n                }\n            ],\n            \"ipAddressTypeAvailability\": \"public_IPv4_address_available\",\n            \"qosMapSetConfiguration\": null,\n            \"apGeospatialLocation\": null,\n            \"apCivicLocation\": null,\n            \"apPublicLocationIdUri\": null,\n            \"gasAddr3Behaviour\": \"p2pSpecWorkaroundFromRequest\",\n            \"anqpDomainId\": 1234,\n            \"disableDownstreamGroupAddressedForwarding\": false,\n            \"enable2pt4GHz\": true,\n            \"enable5GHz\": true,\n            \"associatedAccessSsidProfileIds\": [\n                {{access-ssid-id}}\n            ],\n            \"osuSsidProfileId\": {{osu-ssid-id}},\n            \"passpointOperatorProfileId\": {{operator-id}},\n            \"passpointVenueProfileId\": {{venue-id}},\n            \"passpointOsuProviderProfileIds\": [\n                {{provider-id-2}},\n                {{provider-id-1}}\n            ],\n            \"profileType\": \"passpoint\"\n        },\n        \"childProfileIds\": [\n            {{operator-id}},\n            {{venue-id}},\n            {{provider-id-1}},\n            {{provider-id-2}}\n        ]\n    }\n]"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/portal/profile",
@@ -1139,12 +1224,132 @@
 					]
 				},
 				{
+					"name": "Update hotspot2 profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get hotspot id\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    console.log(jsonData.id);",
+									"    pm.collectionVariables.set(\"hotspot-name\", jsonData.name);",
+									"    pm.collectionVariables.set(\"hotspot-id\", jsonData.id,Number);",
+									"    pm.collectionVariables.set(\"hotspot-last-modified\", jsonData.lastModifiedTimestamp);",
+									"});",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"id\": {{hotspot-id}},\n        \"customerId\": 2,\n        \"profileType\": \"passpoint\",\n        \"name\": \"{{hotspot-name}}\",\n        \"details\": {\n            \"model_type\": \"PasspointProfile\",\n            \"enableInterworkingAndHs20\": true,\n            \"hessid\": null,\n            \"additionalStepsRequiredForAccess\": 0,\n            \"deauthRequestTimeout\": 0,\n            \"operatingClass\": 0,\n            \"termsAndConditionsFile\": {\n                \"model_type\": \"ManagedFileInfo\",\n                \"md5checksum\": null,\n                \"lastModifiedTimestamp\": null,\n                \"apExportUrl\": \"https://localhost:9091/filestore/termsAndConditions\",\n                \"fileCategory\": \"ExternalPolicyConfiguration\",\n                \"fileType\": \"TEXT\",\n                \"altSlot\": false\n            },\n            \"whitelistDomain\": null,\n            \"emergencyServicesReachable\": true,\n            \"unauthenticatedEmergencyServiceAccessible\": false,\n            \"internetConnectivity\": true,\n            \"connectionCapabilitySet\": [\n                {\n                    \"model_type\": \"PasspointConnectionCapability\",\n                    \"connectionCapabilitiesPortNumber\": 8888,\n                    \"connectionCapabilitiesIpProtocol\": \"TCP\",\n                    \"connectionCapabilitiesStatus\": \"open\"\n                }\n            ],\n            \"ipAddressTypeAvailability\": \"public_IPv4_address_available\",\n            \"qosMapSetConfiguration\": null,\n            \"apGeospatialLocation\": null,\n            \"apCivicLocation\": null,\n            \"apPublicLocationIdUri\": null,\n            \"gasAddr3Behaviour\": \"p2pSpecWorkaroundFromRequest\",\n            \"anqpDomainId\": 1234,\n            \"disableDownstreamGroupAddressedForwarding\": false,\n            \"enable2pt4GHz\": true,\n            \"enable5GHz\": true,\n            \"associatedAccessSsidProfileIds\": [\n                {{access-ssid-id}}\n            ],\n            \"osuSsidProfileId\": {{osu-ssid-id}},\n            \"passpointOperatorProfileId\": {{operator-id}},\n            \"passpointVenueProfileId\": {{venue-id}},\n            \"passpointOsuProviderProfileIds\": [\n                {{provider-id-2}},\n                {{provider-id-1}}\n            ],\n            \"profileType\": \"passpoint\"\n        },\n            \"lastModifiedTimestamp\": {{hotspot-last-modified}},\n        \"childProfileIds\": [\n            {{operator-id}},\n            {{venue-id}},\n            {{provider-id-1}},\n            {{provider-id-2}}\n        ]\n    }\n]"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/portal/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portal",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "this object is returned in the cases when an API throws an exception",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/portal/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"portal",
+										"profile"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"exType\": \"IllegalStateException\",\n \"error\": \"culpa vel\",\n \"path\": \"aliquip reprehenderit dolore Ut\",\n \"timestamp\": -76959078\n}"
+						},
+						{
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/portal/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"portal",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"profileType\": \"equipment_ap\",\n \"customerId\": 2,\n \"name\": \"example AP profile\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Update osu ssid profile",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "b78cb63f-e207-426e-ac4e-463f7ee2b576",
 								"exec": [
 									"pm.test(\"Get osu-ssid id\", function() {",
 									"    var jsonData = pm.response.json();",
@@ -1170,7 +1375,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"id\": {{osu-ssid-id}},\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{osu-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{osu-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is2dot4GHz\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"open\",\n            \"vlanId\": 1,\n            \"keyStr\": null,\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": null,\n            \"radiusAccountingServiceName\": null,\n            \"radiusAcountingServiceInterval\": null,\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\",\n            \"radiusClientConfiguration\": {\n                \"model_type\": \"RadiusNasConfiguration\",\n                \"nasClientId\": \"DEFAULT\",\n                \"nasClientIp\": \"WAN_IP\",\n                \"userDefinedNasId\": null,\n                \"userDefinedNasIp\": null,\n                \"operatorId\": null\n            }\n        },\n        \"childProfileIds\": [\n            {{hotspot-id}}\n        ],\n        \"lastModifiedTimestamp\": {{profile-osu-ssid-last-modified}}\n    }\n]"
+							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"id\": {{osu-ssid-id}},\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{osu-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{osu-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is2dot4GHz\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"open\",\n            \"vlanId\": 1,\n            \"keyStr\": null,\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": null,\n            \"radiusAccountingServiceName\": null,\n            \"radiusAcountingServiceInterval\": null,\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\",\n            \"radiusClientConfiguration\": {\n                \"model_type\": \"RadiusNasConfiguration\",\n                \"nasClientId\": \"DEFAULT\",\n                \"nasClientIp\": \"WAN_IP\",\n                \"userDefinedNasId\": null,\n                \"userDefinedNasIp\": null,\n                \"nasOperatorId\": null\n            }\n        },\n        \"childProfileIds\": [\n            {{hotspot-id}}\n        ],\n        \"lastModifiedTimestamp\": {{profile-osu-ssid-last-modified}}\n    }\n]"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/portal/profile",
@@ -1256,7 +1461,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "397cd97c-8f02-4d23-9b09-1c0415c3c23c",
 								"exec": [
 									"pm.test(\"Get access-ssid id\", function() {",
 									"    var jsonData = pm.response.json();",
@@ -1283,7 +1487,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"id\": {{access-ssid-id}},\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{access-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{access-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is5GHzU\",\n                \"is5GHzL\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"{{access-profile-secure-mode}}\",\n            \"vlanId\": 1,\n            \"keyStr\": \"testing123\",\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": \"{{access-profile-radius-service-name}}\",\n            \"radiusAccountingServiceName\": \"{{access-profile-radius-accounting-service-name}}\",\n            \"radiusAcountingServiceInterval\": {{access-profile-radius-accounting-service-interval}},\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\",\n            \"radiusClientConfiguration\": {\n                \"model_type\": \"RadiusNasConfiguration\",\n                \"nasClientId\": \"DEFAULT\",\n                \"nasClientIp\": \"WAN_IP\",\n                \"userDefinedNasId\": null,\n                \"userDefinedNasIp\": null,\n                \"operatorId\": \"test\"\n            }\n        },\n        \"childProfileIds\": [\n            {{hotspot-id}}\n        ],\n        \"lastModifiedTimestamp\": {{profile-access-ssid-last-modified}}\n    }\n]"
+							"raw": "[\n    {\n        \"model_type\": \"Profile\",\n        \"id\": {{access-ssid-id}},\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{access-ssid-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"{{access-ssid-name}}\",\n            \"appliedRadios\": [\n                \"is5GHzU\",\n                \"is5GHzL\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"{{access-profile-secure-mode}}\",\n            \"vlanId\": 1,\n            \"keyStr\": \"testing123\",\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceName\": \"{{access-profile-radius-service-name}}\",\n            \"radiusAccountingServiceName\": \"{{access-profile-radius-accounting-service-name}}\",\n            \"radiusAcountingServiceInterval\": {{access-profile-radius-accounting-service-interval}},\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"profileType\": \"ssid\",\n            \"radiusClientConfiguration\": {\n                \"model_type\": \"RadiusNasConfiguration\",\n                \"nasClientId\": \"DEFAULT\",\n                \"nasClientIp\": \"WAN_IP\",\n                \"userDefinedNasId\": null,\n                \"userDefinedNasIp\": null,\n                \"nasOperatorId\": \"test\"\n            }\n        },\n        \"childProfileIds\": [\n            {{hotspot-id}}\n        ],\n        \"lastModifiedTimestamp\": {{profile-access-ssid-last-modified}}\n    }\n]"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/portal/profile",
@@ -1369,17 +1573,26 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "782860fb-71cb-4e99-b23d-8a46abe3e170",
 								"exec": [
 									"pm.test(\"Get metrics id\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    console.log(jsonData.id);",
+									"    pm.collectionVariables.set(\"metrics-profile-name\", jsonData.name);",
 									"    pm.collectionVariables.set(\"metrics-profile-id\", jsonData.id,Number);",
 									"    pm.collectionVariables.set(\"profile-metrics-last-modified\", jsonData.lastModifiedTimestamp);",
 									"});",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
 									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"pm.collectionVariables.set(\"metrics-profile-name\", \"metrics-profile-\"+'{{$isoTimestamp}}');"
 								],
 								"type": "text/javascript"
 							}
@@ -1476,18 +1689,18 @@
 					]
 				},
 				{
-					"name": "Create new rf profile",
+					"name": "Create new ap profile",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
-								"id": "ac95be4f-841c-48be-809c-c2abc8cd28cb",
 								"exec": [
-									"pm.test(\"Get rf profile id\", function() {",
+									"pm.test(\"Get metrics id\", function() {",
 									"    var jsonData = pm.response.json();",
 									"    console.log(jsonData.id);",
-									"    pm.collectionVariables.set(\"rf-profile-id\", jsonData.id,Number);",
-									"    pm.collectionVariables.set(\"profile-rf-last-modified\", jsonData.lastModifiedTimestamp);",
+									"    pm.collectionVariables.set(\"profile-ap-name\", jsonData.name);",
+									"    pm.collectionVariables.set(\"profile-ap-id\", jsonData.id,Number);",
+									"    pm.collectionVariables.set(\"profile-ap-last-modified\", jsonData.lastModifiedTimestamp);",
 									"});",
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -1495,115 +1708,12 @@
 								],
 								"type": "text/javascript"
 							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"model_type\": \"Profile\",\n    \"customerId\": 2,\n    \"profileType\": \"rf\",\n    \"name\": \"{{rf-profile-name}}\",\n    \"details\": {\n        \"model_type\": \"RfConfiguration\",\n        \"rfConfigMap\": {\n            \"is5GHz\": {\n                \"model_type\": \"RfElementConfiguration\",\n                \"radioType\": \"is5GHz\",\n                \"radioMode\": \"modeAC\",\n                \"rf\": \"{{rf-profile-name}}\",\n                \"beaconInterval\": 100,\n                \"forceScanDuringVoice\": \"disabled\",\n                \"rtsCtsThreshold\": 65535,\n                \"channelBandwidth\": \"is80MHz\",\n                \"mimoMode\": \"twoByTwo\",\n                \"maxNumClients\": 100,\n                \"autoChannelSelection\": false,\n                \"activeScanSettings\": {\n                    \"model_type\": \"ActiveScanSettings\",\n                    \"enabled\": true,\n                    \"scanFrequencySeconds\": 10,\n                    \"scanDurationMillis\": 65\n                },\n                \"neighbouringListApConfig\": {\n                    \"model_type\": \"NeighbouringAPListConfiguration\",\n                    \"minSignal\": -85,\n                    \"maxAps\": 25\n                },\n                \"minAutoCellSize\": -65,\n                \"perimeterDetectionEnabled\": true,\n                \"channelHopSettings\": {\n                    \"model_type\": \"ChannelHopSettings\",\n                    \"noiseFloorThresholdInDB\": -75,\n                    \"noiseFloorThresholdTimeInSeconds\": 180,\n                    \"nonWifiThresholdInPercentage\": 50,\n                    \"nonWifiThresholdTimeInSeconds\": 180,\n                    \"obssHopMode\": \"NON_WIFI\"\n                },\n                \"bestApEnabled\": null,\n                \"multicastRate\": \"auto\",\n                \"managementRate\": \"auto\",\n                \"rxCellSizeDb\": -90,\n                \"probeResponseThresholdDb\": -90,\n                \"clientDisconnectThresholdDb\": -90,\n                \"eirpTxPower\": 18,\n                \"bestApSettings\": {\n                    \"model_type\": \"RadioBestApSettings\",\n                    \"mlComputed\": true,\n                    \"dropInSnrPercentage\": 30,\n                    \"minLoadFactor\": 40\n                }\n            },\n            \"is2dot4GHz\": {\n                \"model_type\": \"RfElementConfiguration\",\n                \"radioType\": \"is2dot4GHz\",\n                \"radioMode\": \"modeN\",\n                \"rf\": \"{{rf-profile-name}}\",\n                \"beaconInterval\": 100,\n                \"forceScanDuringVoice\": \"disabled\",\n                \"rtsCtsThreshold\": 65535,\n                \"channelBandwidth\": \"is20MHz\",\n                \"mimoMode\": \"twoByTwo\",\n                \"maxNumClients\": 100,\n                \"autoChannelSelection\": false,\n                \"activeScanSettings\": {\n                    \"model_type\": \"ActiveScanSettings\",\n                    \"enabled\": true,\n                    \"scanFrequencySeconds\": 10,\n                    \"scanDurationMillis\": 65\n                },\n                \"neighbouringListApConfig\": {\n                    \"model_type\": \"NeighbouringAPListConfiguration\",\n                    \"minSignal\": -85,\n                    \"maxAps\": 25\n                },\n                \"minAutoCellSize\": -65,\n                \"perimeterDetectionEnabled\": true,\n                \"channelHopSettings\": {\n                    \"model_type\": \"ChannelHopSettings\",\n                    \"noiseFloorThresholdInDB\": -75,\n                    \"noiseFloorThresholdTimeInSeconds\": 180,\n                    \"nonWifiThresholdInPercentage\": 50,\n                    \"nonWifiThresholdTimeInSeconds\": 180,\n                    \"obssHopMode\": \"NON_WIFI\"\n                },\n                \"bestApEnabled\": null,\n                \"multicastRate\": \"auto\",\n                \"managementRate\": \"auto\",\n                \"rxCellSizeDb\": -90,\n                \"probeResponseThresholdDb\": -90,\n                \"clientDisconnectThresholdDb\": -90,\n                \"eirpTxPower\": 18,\n                \"bestApSettings\": {\n                    \"model_type\": \"RadioBestApSettings\",\n                    \"mlComputed\": true,\n                    \"dropInSnrPercentage\": 20,\n                    \"minLoadFactor\": 50\n                }\n            },\n            \"is5GHzU\": {\n                \"model_type\": \"RfElementConfiguration\",\n                \"radioType\": \"is5GHzU\",\n                \"radioMode\": \"modeAC\",\n                \"rf\": \"{{rf-profile-name}}\",\n                \"beaconInterval\": 100,\n                \"forceScanDuringVoice\": \"disabled\",\n                \"rtsCtsThreshold\": 65535,\n                \"channelBandwidth\": \"is80MHz\",\n                \"mimoMode\": \"twoByTwo\",\n                \"maxNumClients\": 100,\n                \"autoChannelSelection\": false,\n                \"activeScanSettings\": {\n                    \"model_type\": \"ActiveScanSettings\",\n                    \"enabled\": true,\n                    \"scanFrequencySeconds\": 10,\n                    \"scanDurationMillis\": 65\n                },\n                \"neighbouringListApConfig\": {\n                    \"model_type\": \"NeighbouringAPListConfiguration\",\n                    \"minSignal\": -85,\n                    \"maxAps\": 25\n                },\n                \"minAutoCellSize\": -65,\n                \"perimeterDetectionEnabled\": true,\n                \"channelHopSettings\": {\n                    \"model_type\": \"ChannelHopSettings\",\n                    \"noiseFloorThresholdInDB\": -75,\n                    \"noiseFloorThresholdTimeInSeconds\": 180,\n                    \"nonWifiThresholdInPercentage\": 50,\n                    \"nonWifiThresholdTimeInSeconds\": 180,\n                    \"obssHopMode\": \"NON_WIFI\"\n                },\n                \"bestApEnabled\": null,\n                \"multicastRate\": \"auto\",\n                \"managementRate\": \"auto\",\n                \"rxCellSizeDb\": -90,\n                \"probeResponseThresholdDb\": -90,\n                \"clientDisconnectThresholdDb\": -90,\n                \"eirpTxPower\": 18,\n                \"bestApSettings\": {\n                    \"model_type\": \"RadioBestApSettings\",\n                    \"mlComputed\": true,\n                    \"dropInSnrPercentage\": 30,\n                    \"minLoadFactor\": 40\n                }\n            },\n            \"is5GHzL\": {\n                \"model_type\": \"RfElementConfiguration\",\n                \"radioType\": \"is5GHzL\",\n                \"radioMode\": \"modeAC\",\n                \"rf\": \"{{rf-profile-name}}\",\n                \"beaconInterval\": 100,\n                \"forceScanDuringVoice\": \"disabled\",\n                \"rtsCtsThreshold\": 65535,\n                \"channelBandwidth\": \"is80MHz\",\n                \"mimoMode\": \"twoByTwo\",\n                \"maxNumClients\": 100,\n                \"autoChannelSelection\": false,\n                \"activeScanSettings\": {\n                    \"model_type\": \"ActiveScanSettings\",\n                    \"enabled\": true,\n                    \"scanFrequencySeconds\": 10,\n                    \"scanDurationMillis\": 65\n                },\n                \"neighbouringListApConfig\": {\n                    \"model_type\": \"NeighbouringAPListConfiguration\",\n                    \"minSignal\": -85,\n                    \"maxAps\": 25\n                },\n                \"minAutoCellSize\": -65,\n                \"perimeterDetectionEnabled\": true,\n                \"channelHopSettings\": {\n                    \"model_type\": \"ChannelHopSettings\",\n                    \"noiseFloorThresholdInDB\": -75,\n                    \"noiseFloorThresholdTimeInSeconds\": 180,\n                    \"nonWifiThresholdInPercentage\": 50,\n                    \"nonWifiThresholdTimeInSeconds\": 180,\n                    \"obssHopMode\": \"NON_WIFI\"\n                },\n                \"bestApEnabled\": null,\n                \"multicastRate\": \"auto\",\n                \"managementRate\": \"auto\",\n                \"rxCellSizeDb\": -90,\n                \"probeResponseThresholdDb\": -90,\n                \"clientDisconnectThresholdDb\": -90,\n                \"eirpTxPower\": 18,\n                \"bestApSettings\": {\n                    \"model_type\": \"RadioBestApSettings\",\n                    \"mlComputed\": true,\n                    \"dropInSnrPercentage\": 30,\n                    \"minLoadFactor\": 40\n                }\n            }\n        },\n        \"profileType\": \"rf\"\n    },\n    \"childProfileIds\": []\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/portal/profile",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"portal",
-								"profile"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "successful operation",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
-								},
-								"url": {
-									"raw": "{{baseUrl}}/portal/profile",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"portal",
-										"profile"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"profileType\": \"equipment_ap\",\n \"customerId\": 2,\n \"name\": \"example AP profile\"\n}"
 						},
 						{
-							"name": "this object is returned in the cases when an API throws an exception",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
-								},
-								"url": {
-									"raw": "{{baseUrl}}/portal/profile",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"portal",
-										"profile"
-									]
-								}
-							},
-							"status": "Internal Server Error",
-							"code": 500,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								}
-							],
-							"cookie": [],
-							"body": "{\n \"exType\": \"IllegalStateException\",\n \"error\": \"culpa vel\",\n \"path\": \"aliquip reprehenderit dolore Ut\",\n \"timestamp\": -76959078\n}"
-						}
-					]
-				},
-				{
-					"name": "Create new ap profile",
-					"event": [
-						{
-							"listen": "test",
+							"listen": "prerequest",
 							"script": {
-								"id": "74d0e5cf-cd37-4b8b-aab4-5b1a4393fede",
 								"exec": [
-									"pm.test(\"Get metrics id\", function() {",
-									"    var jsonData = pm.response.json();",
-									"    console.log(jsonData.id);",
-									"    pm.collectionVariables.set(\"profile-ap-id\", jsonData.id,Number);",
-									"    pm.collectionVariables.set(\"profile-ap-last-modified\", jsonData.lastModifiedTimestamp);",
-									"});",
-									"pm.test(\"Status code is 200\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
+									"pm.collectionVariables.set(\"profile-ap-name\", \"ap-profile-\"+'{{$isoTimestamp}}');"
 								],
 								"type": "text/javascript"
 							}
@@ -1705,7 +1815,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1de6f56b-b1be-49f4-8381-113499bab4c3",
 								"exec": [
 									"pm.test(\"Get equipment id\", function() {",
 									"    var jsonData = pm.response.json();",
@@ -1824,7 +1933,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "31cca693-4bee-4794-bd0a-f2580d68300c",
 								"exec": [
 									"pm.test(\"Update equipment\", function() {",
 									"    var jsonData = pm.response.json();",
@@ -1936,7 +2044,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "f43d1748-b82c-42c8-8f9d-918be81ad600",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -1946,15 +2053,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d73280c0-b491-49d0-9daf-21916fd353d8",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Cleanup",
@@ -1965,7 +2070,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "98e4b3e1-8070-4847-b495-4e23d4934e2d",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2084,7 +2188,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a2b538f0-89c4-4e00-ae9b-6e55a97863ec",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2192,7 +2295,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "84e9fe6e-ebdf-44f1-b4c7-92cbf2155aea",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2300,7 +2402,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "db2f88ee-164d-4fe6-a030-54cfff5405b1",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2408,7 +2509,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "5bd218c5-4222-41e3-9c81-7cd2f2889b88",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2516,7 +2616,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "d919cf01-1c12-4972-8037-dfea50fdb1a7",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2624,7 +2723,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "9b2028fa-bf99-463e-b923-b6a774865095",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2732,7 +2830,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "b1d0f577-55e9-4b3c-bcac-762b2cc85928",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2840,7 +2937,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "2a626ba2-d363-4e02-ac5b-03d078c71486",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -2948,7 +3044,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c82bb589-91d4-44a2-a020-ddd5d9ec9076",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3056,7 +3151,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "3a30c80c-1a42-48b0-92ad-bd62893a9bd8",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3164,7 +3258,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "17d17f05-f2bc-4a47-9780-626c2bb04309",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3272,7 +3365,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "a96063e1-f82f-49cc-aaf3-9bbcb20dcd1d",
 								"exec": [
 									"pm.test(\"Status code is 200\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -3380,7 +3472,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "ce568d4f-9281-4f7f-bd86-ed503f7c3b9d",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -3390,15 +3481,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "48b0dea1-6566-4abe-86a3-89490df18176",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"auth": {
@@ -3415,7 +3504,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "670efc8b-41c6-49a9-94e9-cc86c3a8e082",
 				"type": "text/javascript",
 				"exec": [
 					"const timestampInSeconds = new Date().getTime();",
@@ -3429,7 +3517,6 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "e06f418c-e5bf-4c68-86ed-41e56b06aa45",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -3439,285 +3526,232 @@
 	],
 	"variable": [
 		{
-			"id": "ec5ab250-1af7-4a9a-8be2-28e423af19b6",
 			"key": "baseUrl",
 			"value": "https://localhost:9091"
 		},
 		{
-			"id": "110ee5b3-ee3c-4f72-af23-544d68ddd372",
 			"key": "access-token",
 			"value": "null"
 		},
 		{
-			"id": "e337905d-3308-45f3-be6c-01bae130c8c3",
 			"key": "operator-id",
 			"value": "0"
 		},
 		{
-			"id": "ceec3769-c090-4192-957a-502d83320d40",
 			"key": "operator-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "52d9c531-ca40-47bc-a621-71fcb24c0b10",
 			"key": "operator-name",
 			"value": "Passpoint-Operator"
 		},
 		{
-			"id": "034eccf3-950b-4a14-a049-b3c1d5e7cf4f",
 			"key": "venue-id",
 			"value": "0"
 		},
 		{
-			"id": "44691fcc-6b45-4b9a-9f2e-80f56425bb61",
 			"key": "venue-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "901c3d34-6b1a-4de1-9e45-09fe46a3e4d2",
 			"key": "venue-name",
 			"value": "Passpoint-Venue"
 		},
 		{
-			"id": "898203ff-7ef4-434d-8f55-4123e1ab4f56",
 			"key": "provider-id-1",
 			"value": "0"
 		},
 		{
-			"id": "3b6a92b9-4f9f-4212-b8d2-2671a98d081e",
 			"key": "provider1-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "ed7eba43-0cc2-44a6-a4ee-1e2625eed777",
 			"key": "provider-name-1",
 			"value": "Passpoint-OSU-Provider"
 		},
 		{
-			"id": "08ee744b-aaea-4120-9ad6-5712847c746f",
 			"key": "provider-name-2",
 			"value": "Passpoint-OSU-Provider-2"
 		},
 		{
-			"id": "494f64d9-6c1f-46c0-8185-d7642f628646",
 			"key": "provider-id-2",
 			"value": "0"
 		},
 		{
-			"id": "a1e87db0-58e6-40ac-ad38-0893194dd5c9",
 			"key": "provider2-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "9d7e172d-cfb2-49f1-8326-575da00140d1",
 			"key": "hotspot-id",
 			"value": "0"
 		},
 		{
-			"id": "08c8f44e-c1ed-4553-b278-db6150e6aa47",
 			"key": "hotspot-name",
 			"value": "Passpoint-Config"
 		},
 		{
-			"id": "186d0501-7efb-4986-8d77-b81cfd34a0e6",
 			"key": "hotspot-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "8f2389bc-3e89-4807-9bfd-d3ad4139b738",
 			"key": "osu-ssid-id",
 			"value": "0"
 		},
 		{
-			"id": "b2964965-49f2-47c7-ad93-e7401dc749a3",
 			"key": "osu-ssid-name",
 			"value": "ssid-open-passpoint"
 		},
 		{
-			"id": "de000268-4226-4f8d-bd3e-f5c75cd9c970",
 			"key": "profile-osu-ssid-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "4120ff46-08f8-41ec-a451-753e40577ee4",
 			"key": "access-ssid-name",
 			"value": "ssid-access-passpoint"
 		},
 		{
-			"id": "836539a9-aa62-4190-92c9-ca9e61e53c31",
 			"key": "metrics-profile-id",
 			"value": "0"
 		},
 		{
-			"id": "9f35b13a-7a3c-477e-94a1-e8c593d9cab5",
 			"key": "metrics-profile-name",
 			"value": "Metrics-Profile-passpoint"
 		},
 		{
-			"id": "99626c1b-c7ef-4da2-af65-02cac7477bc2",
 			"key": "profile-metrics-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "47aea233-5014-484d-ba60-d8909953d95d",
 			"key": "rf-profile-name",
-			"value": "passpoint-rf"
+			"value": "TipWlan-rf"
 		},
 		{
-			"id": "c133564c-c8ca-40c7-a9cf-d8bb843b2210",
 			"key": "rf-profile-id",
-			"value": "0"
+			"value": "4"
 		},
 		{
-			"id": "7f5a43dc-9a2a-4ddc-b400-d0d68769f719",
 			"key": "profile-rf-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "f85e89d1-5363-42e7-9a55-368cc1b8f4ef",
 			"key": "profile-ap-id",
 			"value": "0"
 		},
 		{
-			"id": "d78809a3-b856-4008-97f6-6e5e45624281",
 			"key": "profile-ap-name",
 			"value": "ApProfile-passpoint"
 		},
 		{
-			"id": "5d416a28-e1d8-4919-9540-eb83a9a6f2b7",
 			"key": "profile-ap-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "cd79ac77-6999-4f35-bd39-1a16b90dd65d",
 			"key": "access-ssid-id",
 			"value": "0"
 		},
 		{
-			"id": "9362a9c1-a0bb-4cac-890f-bca60cfdd893",
 			"key": "profile-access-ssid-last-modified",
 			"value": "0"
 		},
 		{
-			"id": "8bf870e1-3865-4240-8fea-06f9c4158df8",
 			"key": "equipment-last-modified-timestamp",
 			"value": "0"
 		},
 		{
-			"id": "4ed07fc4-c7df-4c18-9d5d-88a246f1b671",
 			"key": "equipment-id",
 			"value": "1"
 		},
 		{
-			"id": "dc239484-a5ae-410d-b48f-be14ea81997f",
 			"key": "access-profile-radius-service-name",
-			"value": "Radius-Passpoint-Profile"
+			"value": "$randomBs"
 		},
 		{
-			"id": "025c6edb-7f99-4ef1-882d-802f7ed48739",
 			"key": "access-profile-secure-mode",
 			"value": "wpa2EAP"
 		},
 		{
-			"id": "5d2081e7-2323-48c4-b673-0cfbf7599f4f",
 			"key": "radius-profile-id",
 			"value": "1"
 		},
 		{
-			"id": "877bf511-4c7e-40d4-8e7f-5cd9c2fcc946",
 			"key": "operator-domain-name",
 			"value": "telecominfraproject.atlassian.net"
 		},
 		{
-			"id": "02354eec-bb71-4e40-89c5-726cbe565bf2",
 			"key": "access-profile-radius-accounting-service-name",
-			"value": "Radius-Passpoint-Accounting-Profile"
+			"value": "test"
 		},
 		{
-			"id": "12c08a83-d7e5-490d-989c-888a7a81613b",
 			"key": "radius-accounting-profile-id",
 			"value": "2"
 		},
 		{
-			"id": "4b1369c8-df27-4441-b914-0402c08c6340",
 			"key": "profile-radius-last-modified",
 			"value": ""
 		},
 		{
-			"id": "4edd8141-2469-4711-a1ac-612d9852a9e3",
 			"key": "profile-radius-accounting-last-modified",
 			"value": ""
 		},
 		{
-			"id": "ae22562e-d2a3-46b1-aee7-c30c2aef7f9c",
 			"key": "radius-auth-port",
 			"value": "1812"
 		},
 		{
-			"id": "20decdab-f767-42a1-9db6-80183dec820f",
 			"key": "radius-accounting-auth-port",
 			"value": "1813"
 		},
 		{
-			"id": "78d7e4eb-37d1-49bf-bebb-bf697deb8910",
 			"key": "radius-accounting-service-region-name",
 			"value": "Ottawa"
 		},
 		{
-			"id": "03be9abf-a440-4817-9a8f-55e46f55153f",
 			"key": "radius-service-region-name",
 			"value": "Ottawa"
 		},
 		{
-			"id": "92e4caf8-7072-4413-a5ba-bcea57dcbc11",
 			"key": "radius-service-ip",
 			"value": "192.168.1.101"
 		},
 		{
-			"id": "541abb05-c7e8-41f7-bbc3-bbdbff918e1c",
 			"key": "radius-accounting-service-ip",
 			"value": "192.168.1.101"
 		},
 		{
-			"id": "2f224a66-0174-419c-84be-bdcc057e5c0e",
 			"key": "equipment-location-id",
 			"value": "8"
 		},
 		{
-			"id": "8147917f-0998-46e8-aa23-1416bab65acc",
 			"key": "equipment-inventory-id",
 			"value": "Open_AP_21P10C68818122"
 		},
 		{
-			"id": "c571ca2e-5cde-46dd-a51c-33dec6a2d5ef",
 			"key": "equipment-model",
 			"value": "EA8300-CA"
 		},
 		{
-			"id": "3ac57a96-0b38-44e0-b130-0e812b011bbc",
 			"key": "equipment-serial-number",
 			"value": "21P10C68818122"
 		},
 		{
-			"id": "af520823-8276-4aeb-ab13-a40f522db24a",
 			"key": "equipment-forward-mode",
 			"value": "BRIDGE"
 		},
 		{
-			"id": "d3fa6d7a-2ea5-4a66-a26a-405a1e28c6b9",
 			"key": "from_timestamp",
 			"value": "0"
 		},
 		{
-			"id": "c12f2fa6-7a11-4b69-abad-a8ca90df33c4",
 			"key": "to_timestamp",
 			"value": "0"
 		},
 		{
-			"id": "86d05c98-ee58-4619-8144-89ea8e384f08",
 			"key": "access-profile-radius-accounting-service-interval",
 			"value": "300"
+		},
+		{
+			"value": "",
+			"disabled": true
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
