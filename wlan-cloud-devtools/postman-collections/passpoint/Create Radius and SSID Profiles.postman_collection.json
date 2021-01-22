@@ -616,6 +616,232 @@
 					]
 				},
 				{
+					"name": "Get access ssid profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get access-ssid id\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    console.log(jsonData.id);",
+									"    pm.collectionVariables.set(\"access-ssid-id\", jsonData.id,Number);",
+									"    pm.collectionVariables.set(\"profile-access-ssid-last-modified\", jsonData.lastModifiedTimestamp);",
+									"});",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/portal/profile?profileId={{access-ssid-id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portal",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "profileId",
+									"value": "{{access-ssid-id}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "this object is returned in the cases when an API throws an exception",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/portal/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"portal",
+										"profile"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"exType\": \"IllegalStateException\",\n \"error\": \"culpa vel\",\n \"path\": \"aliquip reprehenderit dolore Ut\",\n \"timestamp\": -76959078\n}"
+						},
+						{
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/portal/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"portal",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"profileType\": \"equipment_ap\",\n \"customerId\": 2,\n \"name\": \"example AP profile\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Get rf-profile",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get access-ssid id\", function() {",
+									"    var jsonData = pm.response.json();",
+									"    console.log(jsonData.id);",
+									"    pm.collectionVariables.set(\"access-ssid-id\", jsonData.id,Number);",
+									"    pm.collectionVariables.set(\"profile-access-ssid-last-modified\", jsonData.lastModifiedTimestamp);",
+									"});",
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/portal/profile?profileId={{access-ssid-id}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portal",
+								"profile"
+							],
+							"query": [
+								{
+									"key": "profileId",
+									"value": "{{access-ssid-id}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "this object is returned in the cases when an API throws an exception",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/portal/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"portal",
+										"profile"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"exType\": \"IllegalStateException\",\n \"error\": \"culpa vel\",\n \"path\": \"aliquip reprehenderit dolore Ut\",\n \"timestamp\": -76959078\n}"
+						},
+						{
+							"name": "successful operation",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
+								},
+								"url": {
+									"raw": "{{baseUrl}}/portal/profile",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"portal",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"profileType\": \"equipment_ap\",\n \"customerId\": 2,\n \"name\": \"example AP profile\"\n}"
+						}
+					]
+				},
+				{
 					"name": "Get Equipment By Id",
 					"event": [
 						{
@@ -906,15 +1132,15 @@
 	"variable": [
 		{
 			"key": "baseUrl",
-			"value": "https://localhost:9091"
+			"value": "https://localhost:4044"
 		},
 		{
 			"key": "access-token",
-			"value": "eyJpc3MiOiJ0aXAiLCJqdGkiOiI2MjhhNWNlOC02OTE3LTRjYjEtYTUwYS1mMWEwMzA5OTlmZDUiLCJleHBpcnlUaW1lIjoxNjExMzU1MjMxMDE5LCJjdXN0b21lcklkIjoyLCJ1c2VyTmFtZSI6InN1cHBvcnRAZXhhbXBsZS5jb20iLCJ1c2VySWQiOjAsInVzZXJSb2xlIjpbIlN1cGVyVXNlciJdfQ==.2eGSxxm/GwF/O/ERkDwg9blKBG1bTbpsPb5S.AjafA5uQzgLYmO8NOV9q2ljT0z0py9H4T1xmHxUGLkgz9cwr/"
+			"value": "eyJpc3MiOiJ0aXAiLCJqdGkiOiJkZTUyYTcxNi00NjY5LTQ4NzItYWEzNS03MjgxNjU5NGFlYWYiLCJleHBpcnlUaW1lIjoxNjExMzU5NTY3ODM5LCJjdXN0b21lcklkIjoyLCJ1c2VyTmFtZSI6InN1cHBvcnRAZXhhbXBsZS5jb20iLCJ1c2VySWQiOjAsInVzZXJSb2xlIjpbIlN1cGVyVXNlciJdfQ==.GLw6n9gp7r.hSnfbK8Zv8KGiO2HtmxEQuFR1vv1dj/5XODFo07Wi1aWF5Nn628eE7Mxb5FyMf5aEipiuElSWG."
 		},
 		{
 			"key": "access-ssid-name",
-			"value": "access-ssid-profile-2021-01-22T21:50:46.972Z"
+			"value": "access-ssid-profile-2021-01-22T23:08:07.410Z"
 		},
 		{
 			"key": "rf-profile-name",
@@ -922,31 +1148,31 @@
 		},
 		{
 			"key": "rf-profile-id",
-			"value": "4"
+			"value": "11"
 		},
 		{
 			"key": "profile-ap-id",
-			"value": 18
+			"value": 22
 		},
 		{
 			"key": "profile-ap-name",
-			"value": "ap-profile-2021-01-22T21:51:25.796Z"
+			"value": "ap-profile-2021-01-22T23:08:25.091Z"
 		},
 		{
 			"key": "profile-ap-last-modified",
-			"value": 1611352285821
+			"value": 1611356905120
 		},
 		{
 			"key": "access-ssid-id",
-			"value": 12
+			"value": 21
 		},
 		{
 			"key": "profile-access-ssid-last-modified",
-			"value": 1611352278649
+			"value": 1611356887445
 		},
 		{
 			"key": "equipment-last-modified-timestamp",
-			"value": 1611352686818
+			"value": 1611356944459
 		},
 		{
 			"key": "equipment-id",
@@ -954,7 +1180,7 @@
 		},
 		{
 			"key": "access-profile-radius-service-name",
-			"value": "radius-profile-2021-01-22T21:50:34.659Z"
+			"value": "radius-profile-2021-01-22T23:03:02.979Z"
 		},
 		{
 			"key": "access-profile-secure-mode",
@@ -962,23 +1188,23 @@
 		},
 		{
 			"key": "radius-profile-id",
-			"value": 9
+			"value": 17
 		},
 		{
 			"key": "access-profile-radius-accounting-service-name",
-			"value": "radius-accounting-profile-2021-01-22T21:50:37.726Z"
+			"value": "radius-accounting-profile-2021-01-22T23:03:07.975Z"
 		},
 		{
 			"key": "radius-accounting-profile-id",
-			"value": 10
+			"value": 18
 		},
 		{
 			"key": "profile-radius-last-modified",
-			"value": 1611352234867
+			"value": 1611356583064
 		},
 		{
 			"key": "profile-radius-accounting-last-modified",
-			"value": 1611352237755
+			"value": 1611356588003
 		},
 		{
 			"key": "radius-auth-port",
@@ -1022,7 +1248,7 @@
 		},
 		{
 			"key": "to_timestamp",
-			"value": 1611352686741
+			"value": 1611356944382
 		},
 		{
 			"key": "access-profile-radius-accounting-service-interval",
