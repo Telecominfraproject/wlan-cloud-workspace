@@ -2,7 +2,9 @@ name: Java Maven CI - TIP WLAN Cloud Master
 
 on: 
   push:
-    branches: [ master ]
+    branches:
+      - master
+      - 'release/**'
 
   schedule:
     # runs nightly build at 5AM
