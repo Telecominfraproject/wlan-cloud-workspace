@@ -5,6 +5,8 @@ on:
     branches:
       - master
       - 'release/**'
+    tags:
+      - '*'
 
   schedule:
     # runs nightly build at 5AM
@@ -39,6 +41,26 @@ jobs:
           password: ${{ secrets.MAVEN_REPO_PASSWORD }}
       - name: Configure maven settings.xml
         run: cp .github/workflows/maven_settings_template.xml /home/runner/.m2/settings.xml
+      - name: Update version in pom.xml
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's/refs\/tags\/[v]//')
+          mvn -B --file wlan-cloud-root/pom.xml versions:set -DnewVersion=$VERSION
+          mvn -B --file wlan-cloud-root/pom.xml install # put new parent version into Maven cache
+          mvn -B --file wlan-cloud-root/pom.xml versions:revert # need to revert so that child modules are able to find its parent
+          mvn -B --file all-modules-build/pom.xml versions:update-parent -DparentVersion=[$VERSION]
+          mvn -B --file wlan-cloud-opensync-controller/opensync-gateway-static-docker/pom.xml versions:update-parent -DparentVersion=[$VERSION]
+          mvn -B --file wlan-cloud-opensync-controller/opensync-gateway-cloud-docker/pom.xml versions:update-parent -DparentVersion=[$VERSION]
+          mvn -B --file wlan-cloud-services/all-cloud-and-opensync-gw-in-one-docker/pom.xml versions:update-parent -DparentVersion=[$VERSION]
+          mvn -B --file wlan-cloud-services/all-cloud-in-one-docker/pom.xml versions:update-parent -DparentVersion=[$VERSION]
+          mvn -B --file wlan-cloud-services/portal-docker/pom.xml versions:update-parent -DparentVersion=[$VERSION]
+          mvn -B --file wlan-cloud-services/prov-docker/pom.xml versions:update-parent -DparentVersion=[$VERSION]
+          mvn -B --file wlan-cloud-services/ssc-docker/pom.xml versions:update-parent -DparentVersion=[$VERSION]
+          mvn -B --file wlan-cloud-services/spc-docker/pom.xml versions:update-parent -DparentVersion=[$VERSION]
+          mvn -B --file wlan-cloud-services/port-forwarding-gateway-docker/pom.xml versions:update-parent -DparentVersion=[$VERSION]
+          mvn -B --file wlan-cloud-services/schema-generator/pom.xml versions:update-parent -DparentVersion=[$VERSION]
+          mvn -B --file wlan-cloud-root/pom.xml versions:set -DnewVersion=$VERSION
+
       - name: Updating commit file
         run: |          
           TIMESTAMP=$(date +'%Y-%m-%d')
