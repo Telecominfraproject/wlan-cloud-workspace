@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "a6409977-7d29-4a70-9a89-7f67d03f43c0",
+		"_postman_id": "53aa9a64-7bb0-4716-ad50-54ed9dd65961",
 		"name": "PasspointProfiles Hotspot2.0",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -59,10 +59,7 @@
 						"method": "POST",
 						"header": [
 							{
-								"description": {
-									"content": "Added as a part of security scheme: bearer",
-									"type": "text/plain"
-								},
+								"description": "Added as a part of security scheme: bearer",
 								"key": "Authorization",
 								"value": "Bearer <token>"
 							}
@@ -102,10 +99,7 @@
 						"method": "POST",
 						"header": [
 							{
-								"description": {
-									"content": "Added as a part of security scheme: bearer",
-									"type": "text/plain"
-								},
+								"description": "Added as a part of security scheme: bearer",
 								"key": "Authorization",
 								"value": "Bearer <token>"
 							}
@@ -150,6 +144,8 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
 							"});",
 							"pm.test(\"Get radius server id\", function() {",
 							"    var jsonData = pm.response.json();",
@@ -195,38 +191,6 @@
 			},
 			"response": [
 				{
-					"name": "successful operation",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/portal/profile",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"portal",
-								"profile"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						}
-					],
-					"cookie": [],
-					"body": "{\n \"profileType\": \"equipment_ap\",\n \"customerId\": 2,\n \"name\": \"example AP profile\"\n}"
-				},
-				{
 					"name": "this object is returned in the cases when an API throws an exception",
 					"originalRequest": {
 						"method": "POST",
@@ -257,6 +221,38 @@
 					],
 					"cookie": [],
 					"body": "{\n \"exType\": \"IllegalStateException\",\n \"error\": \"culpa vel\",\n \"path\": \"aliquip reprehenderit dolore Ut\",\n \"timestamp\": -76959078\n}"
+				},
+				{
+					"name": "successful operation",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/portal/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portal",
+								"profile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"profileType\": \"equipment_ap\",\n \"customerId\": 2,\n \"name\": \"example AP profile\"\n}"
 				}
 			]
 		},
@@ -269,6 +265,8 @@
 						"exec": [
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
 							"});",
 							"pm.test(\"Get rf profile id\", function() {",
 							"    var jsonData = pm.response.json();",
@@ -391,12 +389,14 @@
 							"pm.test(\"Get ssid profile id\", function() {",
 							"    var jsonData = pm.response.json();",
 							"    console.log(jsonData.id);",
-							"    pm.environment.set(\"ssid-access-profile-name\", jsonData.name);",
+							"    pm.environment.set(\"ssid-profile-name\", jsonData.name);",
 							"    pm.environment.set(\"ssid-profile-id\", Number(jsonData.id));",
 							"    pm.environment.set(\"ssid-profile-last-modified\", Number(jsonData.lastModifiedTimestamp));",
 							"});",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -406,7 +406,7 @@
 					"listen": "prerequest",
 					"script": {
 						"exec": [
-							"pm.environment.set(\"ssid-access-profile-name\", \"ssid-passpoint-access-\"+'{{$timestamp}}');"
+							"pm.environment.set(\"ssid-profile-name\", \"ssid-passpoint-access-\"+'{{$timestamp}}');"
 						],
 						"type": "text/javascript"
 					}
@@ -422,7 +422,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{ssid-access-profile-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"ssid-passpoint-access\",\n            \"appliedRadios\": [\n                \"is5GHz\",\n                \"is5GHzL\",\n                \"is5GHzU\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"wpaEAP\",\n            \"vlanId\": 1,\n            \"dynamicVlan\": \"disabled\",\n            \"keyStr\": \"{{$randomPassword}}\",\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceId\": {{radius-profile-id}},\n            \"radiusAcountingServiceInterval\": 60,\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"useRadSec\": true,\n            \"useRadiusProxy\": true,\n            \"wepConfig\": null,\n            \"forwardMode\": \"BRIDGE\",\n            \"radiusClientConfiguration\": {\n                \"model_type\": \"RadiusNasConfiguration\",\n                \"nasClientId\": \"DEFAULT\",\n                \"nasClientIp\": \"WAN_IP\",\n                \"userDefinedNasId\": null,\n                \"userDefinedNasIp\": null,\n                \"operatorId\": null\n            },\n            \"profileType\": \"ssid\"\n        },\n        \"childProfileIds\": [\n            {{passpoint-profile-id}},{{radius-profile-id}}\n        ]\n    }"
+					"raw": "    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{ssid-profile-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"ssid-passpoint-access\",\n            \"appliedRadios\": [\n                \"is5GHz\",\n                \"is5GHzL\",\n                \"is5GHzU\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"wpaEAP\",\n            \"vlanId\": 1,\n            \"dynamicVlan\": \"disabled\",\n            \"keyStr\": \"{{$randomPassword}}\",\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceId\": {{radius-profile-id}},\n            \"radiusAcountingServiceInterval\": 60,\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"useRadiusProxy\": false,\n            \"wepConfig\": null,\n            \"forwardMode\": \"BRIDGE\",\n            \"radiusClientConfiguration\": {\n                \"model_type\": \"RadiusNasConfiguration\",\n                \"nasClientId\": \"DEFAULT\",\n                \"nasClientIp\": \"WAN_IP\",\n                \"userDefinedNasId\": null,\n                \"userDefinedNasIp\": null,\n                \"operatorId\": null\n            },\n            \"profileType\": \"ssid\"\n        },\n        \"childProfileIds\": [\n            {{passpoint-profile-id}},{{radius-profile-id}}\n        ]\n    }"
 				},
 				"url": {
 					"raw": "{{baseUrl}}/portal/profile",
@@ -436,38 +436,6 @@
 				}
 			},
 			"response": [
-				{
-					"name": "successful operation",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/portal/profile",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"portal",
-								"profile"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						}
-					],
-					"cookie": [],
-					"body": "{\n \"profileType\": \"equipment_ap\",\n \"customerId\": 2,\n \"name\": \"example AP profile\"\n}"
-				},
 				{
 					"name": "this object is returned in the cases when an API throws an exception",
 					"originalRequest": {
@@ -499,6 +467,38 @@
 					],
 					"cookie": [],
 					"body": "{\n \"exType\": \"IllegalStateException\",\n \"error\": \"culpa vel\",\n \"path\": \"aliquip reprehenderit dolore Ut\",\n \"timestamp\": -76959078\n}"
+				},
+				{
+					"name": "successful operation",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/portal/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portal",
+								"profile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"profileType\": \"equipment_ap\",\n \"customerId\": 2,\n \"name\": \"example AP profile\"\n}"
 				}
 			]
 		},
@@ -518,6 +518,8 @@
 							"});",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -543,7 +545,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "  {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{ssid-osu-profile-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"ssid-passpoint-osu\",\n            \"appliedRadios\": [\n                \"is2dot4GHz\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"open\",\n            \"vlanId\": 1,\n            \"dynamicVlan\": \"disabled\",\n            \"keyStr\": null,\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceId\": 0,\n            \"radiusAcountingServiceInterval\": 60,\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"useRadSec\": false,\n            \"useRadiusProxy\": false,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"radiusClientConfiguration\": {\n                \"model_type\": \"RadiusNasConfiguration\",\n                \"nasClientId\": \"DEFAULT\",\n                \"nasClientIp\": \"WAN_IP\",\n                \"userDefinedNasId\": null,\n                \"userDefinedNasIp\": null,\n                \"operatorId\": null\n            },\n            \"profileType\": \"ssid\"\n        },\n        \"createdTimestamp\": 1615568264377,\n        \"lastModifiedTimestamp\": 1615568264835,\n        \"childProfileIds\": [\n        ]\n    }"
+					"raw": "  {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"ssid\",\n        \"name\": \"{{ssid-osu-profile-name}}\",\n        \"details\": {\n            \"model_type\": \"SsidConfiguration\",\n            \"ssid\": \"ssid-passpoint-osu\",\n            \"appliedRadios\": [\n                \"is2dot4GHz\"\n            ],\n            \"ssidAdminState\": \"enabled\",\n            \"secureMode\": \"open\",\n            \"vlanId\": 1,\n            \"dynamicVlan\": \"disabled\",\n            \"keyStr\": null,\n            \"broadcastSsid\": \"enabled\",\n            \"keyRefresh\": 0,\n            \"noLocalSubnets\": false,\n            \"radiusServiceId\": 0,\n            \"radiusAcountingServiceInterval\": 60,\n            \"captivePortalId\": null,\n            \"bandwidthLimitDown\": 0,\n            \"bandwidthLimitUp\": 0,\n            \"clientBandwidthLimitDown\": 0,\n            \"clientBandwidthLimitUp\": 0,\n            \"videoTrafficOnly\": false,\n            \"radioBasedConfigs\": {\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                },\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioBasedSsidConfiguration\",\n                    \"enable80211r\": null,\n                    \"enable80211k\": null,\n                    \"enable80211v\": null\n                }\n            },\n            \"bonjourGatewayProfileId\": null,\n            \"enable80211w\": null,\n            \"useRadiusProxy\": false,\n            \"wepConfig\": null,\n            \"forwardMode\": null,\n            \"radiusClientConfiguration\": {\n                \"model_type\": \"RadiusNasConfiguration\",\n                \"nasClientId\": \"DEFAULT\",\n                \"nasClientIp\": \"WAN_IP\",\n                \"userDefinedNasId\": null,\n                \"userDefinedNasIp\": null,\n                \"operatorId\": null\n            },\n            \"profileType\": \"ssid\"\n        },\n        \"createdTimestamp\": 1615568264377,\n        \"lastModifiedTimestamp\": 1615568264835,\n        \"childProfileIds\": [\n        ]\n    }"
 				},
 				"url": {
 					"raw": "{{baseUrl}}/portal/profile",
@@ -637,6 +639,8 @@
 							"});",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -756,6 +760,8 @@
 							"});",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -796,38 +802,6 @@
 			},
 			"response": [
 				{
-					"name": "this object is returned in the cases when an API throws an exception",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/portal/profile",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"portal",
-								"profile"
-							]
-						}
-					},
-					"status": "Internal Server Error",
-					"code": 500,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						}
-					],
-					"cookie": [],
-					"body": "{\n \"exType\": \"IllegalStateException\",\n \"error\": \"culpa vel\",\n \"path\": \"aliquip reprehenderit dolore Ut\",\n \"timestamp\": -76959078\n}"
-				},
-				{
 					"name": "successful operation",
 					"originalRequest": {
 						"method": "POST",
@@ -858,6 +832,38 @@
 					],
 					"cookie": [],
 					"body": "{\n \"profileType\": \"equipment_ap\",\n \"customerId\": 2,\n \"name\": \"example AP profile\"\n}"
+				},
+				{
+					"name": "this object is returned in the cases when an API throws an exception",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/portal/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portal",
+								"profile"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"exType\": \"IllegalStateException\",\n \"error\": \"culpa vel\",\n \"path\": \"aliquip reprehenderit dolore Ut\",\n \"timestamp\": -76959078\n}"
 				}
 			]
 		},
@@ -875,6 +881,8 @@
 							"});",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -994,6 +1002,8 @@
 							"});",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1113,6 +1123,8 @@
 							"});",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1228,12 +1240,14 @@
 							"pm.test(\"Get ssid profile id\", function() {",
 							"    var jsonData = pm.response.json();",
 							"    console.log(jsonData.id);",
-							"    pm.environment.set(\"ssid-access-profile-name\", jsonData.name);",
+							"    pm.environment.set(\"ssid-profile-name\", jsonData.name);",
 							"    pm.environment.set(\"ssid-profile-id\", Number(jsonData.id));",
 							"    pm.environment.set(\"ssid-profile-last-modified\", Number(jsonData.lastModifiedTimestamp));",
 							"});",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1259,7 +1273,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"model_type\": \"Profile\",\n    \"id\": {{ssid-profile-id}},\n    \"customerId\": 2,\n    \"profileType\": \"ssid\",\n    \"name\": \"{{ssid-profile-name}}\",\n    \"details\": {\n        \"model_type\": \"SsidConfiguration\",\n        \"ssid\": \"ssid-passpoint-access\",\n        \"appliedRadios\": [\n            \"is5GHzL\",\n            \"is5GHz\",\n            \"is5GHzU\"\n        ],\n        \"ssidAdminState\": \"enabled\",\n        \"secureMode\": \"wpaEAP\",\n        \"vlanId\": 1,\n        \"dynamicVlan\": \"disabled\",\n        \"keyStr\": \"VjXyX8s9F1iczhQ\",\n        \"broadcastSsid\": \"enabled\",\n        \"keyRefresh\": 0,\n        \"noLocalSubnets\": false,\n        \"radiusServiceId\": {{radius-profile-id}},\n        \"radiusAcountingServiceInterval\": 60,\n        \"captivePortalId\": null,\n        \"bandwidthLimitDown\": 0,\n        \"bandwidthLimitUp\": 0,\n        \"clientBandwidthLimitDown\": 0,\n        \"clientBandwidthLimitUp\": 0,\n        \"videoTrafficOnly\": false,\n        \"radioBasedConfigs\": {\n            \"is5GHzL\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            },\n            \"is5GHz\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            },\n            \"is5GHzU\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            },\n            \"is2dot4GHz\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            }\n        },\n        \"bonjourGatewayProfileId\": null,\n        \"enable80211w\": null,\n        \"useRadSec\": true,\n        \"useRadiusProxy\": true,\n        \"wepConfig\": null,\n        \"forwardMode\": \"BRIDGE\",\n        \"radiusClientConfiguration\": {\n            \"model_type\": \"RadiusNasConfiguration\",\n            \"nasClientId\": \"DEFAULT\",\n            \"nasClientIp\": \"WAN_IP\",\n            \"userDefinedNasId\": null,\n            \"userDefinedNasIp\": null,\n            \"operatorId\": null\n        },\n        \"profileType\": \"ssid\"\n    },\n    \"createdTimestamp\": 1615571670299,\n    \"lastModifiedTimestamp\": {{ssid-profile-last-modified}},\n    \"childProfileIds\": [\n        {{radius-profile-id}},\n        {{passpoint-profile-id}}\n    ]\n}"
+					"raw": "{\n    \"model_type\": \"Profile\",\n    \"id\": {{ssid-profile-id}},\n    \"customerId\": 2,\n    \"profileType\": \"ssid\",\n    \"name\": \"{{ssid-profile-name}}\",\n    \"details\": {\n        \"model_type\": \"SsidConfiguration\",\n        \"ssid\": \"ssid-passpoint-access\",\n        \"appliedRadios\": [\n            \"is5GHzL\",\n            \"is5GHz\",\n            \"is5GHzU\"\n        ],\n        \"ssidAdminState\": \"enabled\",\n        \"secureMode\": \"wpaEAP\",\n        \"vlanId\": 1,\n        \"dynamicVlan\": \"disabled\",\n        \"keyStr\": \"VjXyX8s9F1iczhQ\",\n        \"broadcastSsid\": \"enabled\",\n        \"keyRefresh\": 0,\n        \"noLocalSubnets\": false,\n        \"radiusServiceId\": {{radius-profile-id}},\n        \"radiusAcountingServiceInterval\": 60,\n        \"captivePortalId\": null,\n        \"bandwidthLimitDown\": 0,\n        \"bandwidthLimitUp\": 0,\n        \"clientBandwidthLimitDown\": 0,\n        \"clientBandwidthLimitUp\": 0,\n        \"videoTrafficOnly\": false,\n        \"radioBasedConfigs\": {\n            \"is5GHzL\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            },\n            \"is5GHz\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            },\n            \"is5GHzU\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            },\n            \"is2dot4GHz\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            }\n        },\n        \"bonjourGatewayProfileId\": null,\n        \"enable80211w\": null,\n        \"useRadiusProxy\": false,\n        \"wepConfig\": null,\n        \"forwardMode\": \"BRIDGE\",\n        \"radiusClientConfiguration\": {\n            \"model_type\": \"RadiusNasConfiguration\",\n            \"nasClientId\": \"DEFAULT\",\n            \"nasClientIp\": \"WAN_IP\",\n            \"userDefinedNasId\": null,\n            \"userDefinedNasIp\": null,\n            \"operatorId\": null\n        },\n        \"profileType\": \"ssid\"\n    },\n    \"createdTimestamp\": 1615571670299,\n    \"lastModifiedTimestamp\": {{ssid-profile-last-modified}},\n    \"childProfileIds\": [\n        {{radius-profile-id}},\n        {{passpoint-profile-id}}\n    ]\n}"
 				},
 				"url": {
 					"raw": "{{baseUrl}}/portal/profile",
@@ -1273,38 +1287,6 @@
 				}
 			},
 			"response": [
-				{
-					"name": "this object is returned in the cases when an API throws an exception",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/portal/profile",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"portal",
-								"profile"
-							]
-						}
-					},
-					"status": "Internal Server Error",
-					"code": 500,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						}
-					],
-					"cookie": [],
-					"body": "{\n \"exType\": \"IllegalStateException\",\n \"error\": \"culpa vel\",\n \"path\": \"aliquip reprehenderit dolore Ut\",\n \"timestamp\": -76959078\n}"
-				},
 				{
 					"name": "successful operation",
 					"originalRequest": {
@@ -1336,6 +1318,38 @@
 					],
 					"cookie": [],
 					"body": "{\n \"profileType\": \"equipment_ap\",\n \"customerId\": 2,\n \"name\": \"example AP profile\"\n}"
+				},
+				{
+					"name": "this object is returned in the cases when an API throws an exception",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/portal/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portal",
+								"profile"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"exType\": \"IllegalStateException\",\n \"error\": \"culpa vel\",\n \"path\": \"aliquip reprehenderit dolore Ut\",\n \"timestamp\": -76959078\n}"
 				}
 			]
 		},
@@ -1355,6 +1369,8 @@
 							"});",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1380,7 +1396,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"model_type\": \"Profile\",\n    \"id\": {{osu-ssid-profile-id}},\n    \"customerId\": 2,\n    \"profileType\": \"ssid\",\n    \"name\": \"{{ssid-osu-profile-name}}\",\n    \"details\": {\n        \"model_type\": \"SsidConfiguration\",\n        \"ssid\": \"ssid-passpoint-osu\",\n        \"appliedRadios\": [\n            \"is2dot4GHz\"\n        ],\n        \"ssidAdminState\": \"enabled\",\n        \"secureMode\": \"open\",\n        \"vlanId\": 1,\n        \"dynamicVlan\": \"disabled\",\n        \"keyStr\": null,\n        \"broadcastSsid\": \"enabled\",\n        \"keyRefresh\": 0,\n        \"noLocalSubnets\": false,\n        \"radiusServiceId\": 0,\n        \"radiusAcountingServiceInterval\": 60,\n        \"captivePortalId\": null,\n        \"bandwidthLimitDown\": 0,\n        \"bandwidthLimitUp\": 0,\n        \"clientBandwidthLimitDown\": 0,\n        \"clientBandwidthLimitUp\": 0,\n        \"videoTrafficOnly\": false,\n        \"radioBasedConfigs\": {\n            \"is5GHzL\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            },\n            \"is5GHz\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            },\n            \"is5GHzU\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            },\n            \"is2dot4GHz\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            }\n        },\n        \"bonjourGatewayProfileId\": null,\n        \"enable80211w\": null,\n        \"useRadSec\": false,\n        \"useRadiusProxy\": false,\n        \"wepConfig\": null,\n        \"forwardMode\": null,\n        \"radiusClientConfiguration\": {\n            \"model_type\": \"RadiusNasConfiguration\",\n            \"nasClientId\": \"DEFAULT\",\n            \"nasClientIp\": \"WAN_IP\",\n            \"userDefinedNasId\": null,\n            \"userDefinedNasIp\": null,\n            \"operatorId\": null\n        },\n        \"profileType\": \"ssid\"\n    },\n    \"createdTimestamp\": 1615571732233,\n    \"lastModifiedTimestamp\": {{osu-ssid-profile-last-modified}},\n    \"childProfileIds\": [\n        {{passpoint-osu-provider-profile-id}},\n        {{passpoint-osu-provider2-profile-id}}\n    ]\n}"
+					"raw": "{\n    \"model_type\": \"Profile\",\n    \"id\": {{osu-ssid-profile-id}},\n    \"customerId\": 2,\n    \"profileType\": \"ssid\",\n    \"name\": \"{{ssid-osu-profile-name}}\",\n    \"details\": {\n        \"model_type\": \"SsidConfiguration\",\n        \"ssid\": \"ssid-passpoint-osu\",\n        \"appliedRadios\": [\n            \"is2dot4GHz\"\n        ],\n        \"ssidAdminState\": \"enabled\",\n        \"secureMode\": \"open\",\n        \"vlanId\": 1,\n        \"dynamicVlan\": \"disabled\",\n        \"keyStr\": null,\n        \"broadcastSsid\": \"enabled\",\n        \"keyRefresh\": 0,\n        \"noLocalSubnets\": false,\n        \"radiusServiceId\": 0,\n        \"radiusAcountingServiceInterval\": 60,\n        \"captivePortalId\": null,\n        \"bandwidthLimitDown\": 0,\n        \"bandwidthLimitUp\": 0,\n        \"clientBandwidthLimitDown\": 0,\n        \"clientBandwidthLimitUp\": 0,\n        \"videoTrafficOnly\": false,\n        \"radioBasedConfigs\": {\n            \"is5GHzL\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            },\n            \"is5GHz\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            },\n            \"is5GHzU\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            },\n            \"is2dot4GHz\": {\n                \"model_type\": \"RadioBasedSsidConfiguration\",\n                \"enable80211r\": null,\n                \"enable80211k\": null,\n                \"enable80211v\": null\n            }\n        },\n        \"bonjourGatewayProfileId\": null,\n        \"enable80211w\": null,\n        \"useRadiusProxy\": false,\n        \"wepConfig\": null,\n        \"forwardMode\": null,\n        \"radiusClientConfiguration\": {\n            \"model_type\": \"RadiusNasConfiguration\",\n            \"nasClientId\": \"DEFAULT\",\n            \"nasClientIp\": \"WAN_IP\",\n            \"userDefinedNasId\": null,\n            \"userDefinedNasIp\": null,\n            \"operatorId\": null\n        },\n        \"profileType\": \"ssid\"\n    },\n    \"createdTimestamp\": 1615571732233,\n    \"lastModifiedTimestamp\": {{osu-ssid-profile-last-modified}},\n    \"childProfileIds\": [\n        {{passpoint-osu-provider-profile-id}},\n        {{passpoint-osu-provider2-profile-id}}\n    ]\n}"
 				},
 				"url": {
 					"raw": "{{baseUrl}}/portal/profile",
@@ -1394,38 +1410,6 @@
 				}
 			},
 			"response": [
-				{
-					"name": "successful operation",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/portal/profile",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"portal",
-								"profile"
-							]
-						}
-					},
-					"status": "OK",
-					"code": 200,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						}
-					],
-					"cookie": [],
-					"body": "{\n \"profileType\": \"equipment_ap\",\n \"customerId\": 2,\n \"name\": \"example AP profile\"\n}"
-				},
 				{
 					"name": "this object is returned in the cases when an API throws an exception",
 					"originalRequest": {
@@ -1457,6 +1441,38 @@
 					],
 					"cookie": [],
 					"body": "{\n \"exType\": \"IllegalStateException\",\n \"error\": \"culpa vel\",\n \"path\": \"aliquip reprehenderit dolore Ut\",\n \"timestamp\": -76959078\n}"
+				},
+				{
+					"name": "successful operation",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/portal/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portal",
+								"profile"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"profileType\": \"equipment_ap\",\n \"customerId\": 2,\n \"name\": \"example AP profile\"\n}"
 				}
 			]
 		},
@@ -1476,6 +1492,8 @@
 							"});",
 							"pm.test(\"Status code is 200\", function () {",
 							"    pm.response.to.have.status(200);",
+							"    var jsonData = pm.response.json();",
+							"    console.log(jsonData);",
 							"});"
 						],
 						"type": "text/javascript"
@@ -1501,7 +1519,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "    {\n        \"model_type\": \"Profile\",\n        \"customerId\": 2,\n        \"profileType\": \"equipment_ap\",\n        \"name\": \"{{ap-profile-name}}\",\n        \"details\": {\n            \"model_type\": \"ApNetworkConfiguration\",\n            \"networkConfigVersion\": \"AP-1\",\n            \"equipmentType\": \"AP\",\n            \"vlanNative\": true,\n            \"vlan\": 0,\n            \"ntpServer\": {\n                \"model_type\": \"AutoOrManualString\",\n                \"auto\": true,\n                \"value\": \"pool.ntp.org\"\n            },\n            \"syslogRelay\": null,\n            \"rtlsSettings\": null,\n            \"syntheticClientEnabled\": true,\n            \"ledControlEnabled\": true,\n            \"equipmentDiscovery\": false,\n            \"radioMap\": {\n                \"is2dot4GHz\": {\n                    \"model_type\": \"RadioProfileConfiguration\",\n                    \"bestApEnabled\": true,\n                    \"bestAPSteerType\": \"both\"\n                },\n                \"is5GHzU\": {\n                    \"model_type\": \"RadioProfileConfiguration\",\n                    \"bestApEnabled\": true,\n                    \"bestAPSteerType\": \"both\"\n                },\n                \"is5GHzL\": {\n                    \"model_type\": \"RadioProfileConfiguration\",\n                    \"bestApEnabled\": true,\n                    \"bestAPSteerType\": \"both\"\n                }\n            },\n            \"greTunnelConfigurations\": [\n                {\n                    \"model_type\": \"GreTunnelConfiguration\",\n                    \"greTunnelName\": \"gre1\",\n                    \"greRemoteInetAddr\": \"{{$randomIP}}\",\n                    \"vlanIdsInGreTunnel\": [\n                        100\n                    ]\n                }\n            ],\n            \"radSecConfigurations\": [\n                {\n                    \"model_type\": \"RadSecConfiguration\",\n                    \"caCert\": {\n                        \"model_type\": \"ManagedFileInfo\",\n                        \"md5checksum\": null,\n                        \"lastModifiedTimestamp\": null,\n                        \"apExportUrl\": \"/filestore/cacert.pem\",\n                        \"fileCategory\": \"RadSecAuthentication\",\n                        \"fileType\": \"PEM\",\n                        \"altSlot\": false\n                    },\n                    \"clientCert\": {\n                        \"model_type\": \"ManagedFileInfo\",\n                        \"md5checksum\": null,\n                        \"lastModifiedTimestamp\": null,\n                        \"apExportUrl\": \"/filestore/clientcert.pem\",\n                        \"fileCategory\": \"RadSecAuthentication\",\n                        \"fileType\": \"PEM\",\n                        \"altSlot\": false\n                    },\n                    \"clientKey\": {\n                        \"model_type\": \"ManagedFileInfo\",\n                        \"md5checksum\": null,\n                        \"lastModifiedTimestamp\": null,\n                        \"apExportUrl\": \"/filestore/client_dec.key\",\n                        \"fileCategory\": \"RadSecAuthentication\",\n                        \"fileType\": \"KEY\",\n                        \"altSlot\": false\n                    },\n                    \"server\": \"{{$randomIP}}\",\n                    \"port\": 1812,\n                    \"realm\": \"{{$randomDomainName}}\",\n                    \"name\": \"{{$randomCompanyName}}\",\n                    \"passphrase\": \"{{$randomPassword}}\"\n                },\n                {\n                    \"model_type\": \"RadSecConfiguration\",\n                    \"caCert\": {\n                        \"model_type\": \"ManagedFileInfo\",\n                        \"md5checksum\": null,\n                        \"lastModifiedTimestamp\": null,\n                        \"apExportUrl\": \"/filestore/cacert.pem\",\n                        \"fileCategory\": \"RadSecAuthentication\",\n                        \"fileType\": \"PEM\",\n                        \"altSlot\": false\n                    },\n                    \"clientCert\": {\n                        \"model_type\": \"ManagedFileInfo\",\n                        \"md5checksum\": null,\n                        \"lastModifiedTimestamp\": null,\n                        \"apExportUrl\": \"/filestore/clientcert.pem\",\n                        \"fileCategory\": \"RadSecAuthentication\",\n                        \"fileType\": \"PEM\",\n                        \"altSlot\": false\n                    },\n                    \"clientKey\": {\n                        \"model_type\": \"ManagedFileInfo\",\n                        \"md5checksum\": null,\n                        \"lastModifiedTimestamp\": null,\n                        \"apExportUrl\": \"/filestore/client_dec.key\",\n                        \"fileCategory\": \"RadSecAuthentication\",\n                        \"fileType\": \"KEY\",\n                        \"altSlot\": false\n                    },\n                    \"server\": \"{{$randomIP}}\",\n                    \"port\": 1812,\n                    \"realm\": \"{{$randomDomainName}}\",\n                    \"name\": \"{{$randomCompanyName}}\",\n                    \"passphrase\": \"{{$randomPassword}}\"\n                }\n            ],\n            \"profileType\": \"equipment_ap\"\n        },\n        \"childProfileIds\": [\n            {{ssid-profile-id}},{{osu-ssid-profile-id}},\n            {{rf-profile-id}}\n        ]\n    }"
+					"raw": "{\n    \"model_type\": \"Profile\",\n    \"customerId\": 2,\n    \"profileType\": \"equipment_ap\",\n    \"name\": \"{{ap-profile-name}}\",\n    \"details\": {\n        \"model_type\": \"ApNetworkConfiguration\",\n        \"networkConfigVersion\": \"AP-1\",\n        \"equipmentType\": \"AP\",\n        \"vlanNative\": true,\n        \"vlan\": 0,\n        \"ntpServer\": {\n            \"model_type\": \"AutoOrManualString\",\n            \"auto\": true,\n            \"value\": \"pool.ntp.org\"\n        },\n        \"syslogRelay\": null,\n        \"rtlsSettings\": null,\n        \"syntheticClientEnabled\": true,\n        \"ledControlEnabled\": true,\n        \"equipmentDiscovery\": false,\n        \"radioMap\": {\n            \"is2dot4GHz\": {\n                \"model_type\": \"RadioProfileConfiguration\",\n                \"bestApEnabled\": true,\n                \"bestAPSteerType\": \"both\"\n            },\n            \"is5GHzU\": {\n                \"model_type\": \"RadioProfileConfiguration\",\n                \"bestApEnabled\": true,\n                \"bestAPSteerType\": \"both\"\n            },\n            \"is5GHzL\": {\n                \"model_type\": \"RadioProfileConfiguration\",\n                \"bestApEnabled\": true,\n                \"bestAPSteerType\": \"both\"\n            }\n        },\n        \"greTunnelConfigurations\": [\n            {\n                \"model_type\": \"GreTunnelConfiguration\",\n                \"greTunnelName\": \"gre1\",\n                \"greRemoteInetAddr\": \"{{$randomIP}}\",\n                \"vlanIdsInGreTunnel\": [\n                    100\n                ]\n            }\n        ],\n        \"radiusProxyConfigurations\": [\n            {\n                \"model_type\": \"RadiusProxyConfiguration\",\n                \"caCert\": {\n                    \"model_type\": \"ManagedFileInfo\",\n                    \"md5checksum\": null,\n                    \"lastModifiedTimestamp\": null,\n                    \"apExportUrl\": \"/filestore/cacert.pem\",\n                    \"fileCategory\": \"RadSecAuthentication\",\n                    \"fileType\": \"PEM\",\n                    \"altSlot\": false\n                },\n                \"clientCert\": {\n                    \"model_type\": \"ManagedFileInfo\",\n                    \"md5checksum\": null,\n                    \"lastModifiedTimestamp\": null,\n                    \"apExportUrl\": \"/filestore/clientcert.pem\",\n                    \"fileCategory\": \"RadSecAuthentication\",\n                    \"fileType\": \"PEM\",\n                    \"altSlot\": false\n                },\n                \"clientKey\": {\n                    \"model_type\": \"ManagedFileInfo\",\n                    \"md5checksum\": null,\n                    \"lastModifiedTimestamp\": null,\n                    \"apExportUrl\": \"/filestore/client_dec.key\",\n                    \"fileCategory\": \"RadSecAuthentication\",\n                    \"fileType\": \"KEY\",\n                    \"altSlot\": false\n                },\n                \"server\": \"231.239.180.165\",\n                \"port\": 1812,\n                \"realm\": [\n                    \"virgie.com\",\n                    \"marshall.org\",\n                    \"haven.name\"\n                ],\n                \"name\": \"initiatives\",\n                \"passphrase\": \"WmGucI_V0VObrKT\",\n                \"useRadSec\": false\n            },\n            {\n                \"model_type\": \"RadiusProxyConfiguration\",\n                \"caCert\": {\n                    \"model_type\": \"ManagedFileInfo\",\n                    \"md5checksum\": null,\n                    \"lastModifiedTimestamp\": null,\n                    \"apExportUrl\": \"/filestore/cacert.pem\",\n                    \"fileCategory\": \"RadSecAuthentication\",\n                    \"fileType\": \"PEM\",\n                    \"altSlot\": false\n                },\n                \"clientCert\": {\n                    \"model_type\": \"ManagedFileInfo\",\n                    \"md5checksum\": null,\n                    \"lastModifiedTimestamp\": null,\n                    \"apExportUrl\": \"/filestore/clientcert.pem\",\n                    \"fileCategory\": \"RadSecAuthentication\",\n                    \"fileType\": \"PEM\",\n                    \"altSlot\": false\n                },\n                \"clientKey\": {\n                    \"model_type\": \"ManagedFileInfo\",\n                    \"md5checksum\": null,\n                    \"lastModifiedTimestamp\": null,\n                    \"apExportUrl\": \"/filestore/client_dec.key\",\n                    \"fileCategory\": \"RadSecAuthentication\",\n                    \"fileType\": \"KEY\",\n                    \"altSlot\": false\n                },\n                \"server\": \"45.16.67.202\",\n                \"port\": 1812,\n                \"realm\": [\n                    \"derek.biz\",\n                    \"andy.biz\",\n                    \"gus.com\"\n                ],\n                \"name\": \"blockchains\",\n                \"passphrase\": \"VvHUF67LviR0hOV\",\n                \"useRadSec\": false\n            }\n        ],\n        \"profileType\": \"equipment_ap\"\n    },\n    \"childProfileIds\": [\n        {{ssid-profile-id}},\n        {{osu-ssid-profile-id}},\n        {{rf-profile-id}}\n    ]\n}"
 				},
 				"url": {
 					"raw": "{{baseUrl}}/portal/profile",
@@ -1515,38 +1533,6 @@
 				}
 			},
 			"response": [
-				{
-					"name": "this object is returned in the cases when an API throws an exception",
-					"originalRequest": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
-						},
-						"url": {
-							"raw": "{{baseUrl}}/portal/profile",
-							"host": [
-								"{{baseUrl}}"
-							],
-							"path": [
-								"portal",
-								"profile"
-							]
-						}
-					},
-					"status": "Internal Server Error",
-					"code": 500,
-					"_postman_previewlanguage": "json",
-					"header": [
-						{
-							"key": "Content-Type",
-							"value": "application/json"
-						}
-					],
-					"cookie": [],
-					"body": "{\n \"exType\": \"IllegalStateException\",\n \"error\": \"culpa vel\",\n \"path\": \"aliquip reprehenderit dolore Ut\",\n \"timestamp\": -76959078\n}"
-				},
 				{
 					"name": "successful operation",
 					"originalRequest": {
@@ -1578,6 +1564,38 @@
 					],
 					"cookie": [],
 					"body": "{\n \"profileType\": \"equipment_ap\",\n \"customerId\": 2,\n \"name\": \"example AP profile\"\n}"
+				},
+				{
+					"name": "this object is returned in the cases when an API throws an exception",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"profileType\": \"equipment_ap\",\n    \"customerId\": 2,\n    \"name\": \"example AP profile\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/portal/profile",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"portal",
+								"profile"
+							]
+						}
+					},
+					"status": "Internal Server Error",
+					"code": 500,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n \"exType\": \"IllegalStateException\",\n \"error\": \"culpa vel\",\n \"path\": \"aliquip reprehenderit dolore Ut\",\n \"timestamp\": -76959078\n}"
 				}
 			]
 		}
