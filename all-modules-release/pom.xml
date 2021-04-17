@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+        <modelVersion>4.0.0</modelVersion>
+        <parent>
+			<groupId>com.telecominfraproject.wlan</groupId>
+			<artifactId>tip-wlan-cloud-root-pom</artifactId>
+			<version>1.1.0-SNAPSHOT</version>
+			<relativePath>../wlan-cloud-root</relativePath>
+        </parent>
+
+        <artifactId>tip-wlan-workspace-all-modules-release</artifactId>
+        <packaging>pom</packaging>
+        <description>Aggregation of all TIP modules - to release them in one shot.</description>
+
+        <profiles>
+                <profile>
+                        <id>full-build</id>
+                        <activation>
+                                <property>
+                                        <name>full-build</name>
+                                </property>
+                                <activeByDefault>true</activeByDefault>
+                        </activation>
+                        <modules>
+                                <module>../all-modules-build</module>
+                                <module>../wlan-cloud-services/all-cloud-and-opensync-gw-in-one-docker</module>
+                                <module>../wlan-cloud-services/all-cloud-in-one-docker</module>
+                                <module>../wlan-cloud-services/all-cloud-in-one-docker-with-persistence</module>
+                                <module>../wlan-cloud-services/port-forwarding-gateway-docker</module>
+                                <module>../wlan-cloud-services/portal-docker</module>                                
+                                <module>../wlan-cloud-services/prov-docker</module>
+                                <module>../wlan-cloud-services/spc-docker</module>
+                                <module>../wlan-cloud-services/ssc-docker</module>
+                                <module>../wlan-cloud-opensync-controller/opensync-gateway-cloud-docker</module>
+                                <module>../wlan-cloud-opensync-controller/opensync-gateway-static-docker</module>
+                        </modules>
+                </profile>
+        </profiles>
+</project>
+
+
