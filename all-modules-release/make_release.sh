@@ -11,7 +11,7 @@ new_version=$1
 PREVIOUS_VERSION=$(grep "<version>" ../wlan-cloud-root/pom.xml |head -2|tail -1|cut -d '>' -f2|cut -d '<' -f 1)
 echo "Updating TIP pom.xml files from $PREVIOUS_VERSION to version $new_version "
 
-# update versions on TIP modules using special all-modules-release
+# update versions on TIP modules using special all-modules-release  
 mvn  --batch-mode release:update-versions -DdevelopmentVersion="$new_version" -DautoVersionSubmodules=true
 
 
