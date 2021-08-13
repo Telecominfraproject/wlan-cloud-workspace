@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.telecominfraproject.wlan</groupId>
 		<artifactId>tip-wlan-cloud-root-pom</artifactId>
-		<version>1.2.0-SNAPSHOT</version>
+		<version>1.3.0-SNAPSHOT</version>
 		<relativePath>../wlan-cloud-root</relativePath>
 	</parent>
 
@@ -20,7 +20,7 @@
                                 </property>
                                 <activeByDefault>true</activeByDefault>
                         </activation>
-                        <modules>                                                      
+                        <modules>                                                                                               
                                 <module>../wlan-cloud-base/base-build</module>
                                 <module>../wlan-cloud-services/cloud-services-build</module>
                                 <module>../wlan-cloud-opensync-controller/opensync-gateway-build</module>
