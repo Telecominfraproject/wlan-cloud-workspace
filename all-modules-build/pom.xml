@@ -20,7 +20,8 @@
                                 </property>
                                 <activeByDefault>true</activeByDefault>
                         </activation>
-                        <modules>                                                                                               
+                        <modules>
+                                <module>../wlan-cloud-root</module>                                                                                        
                                 <module>../wlan-cloud-base/base-build</module>
                                 <module>../wlan-cloud-services/cloud-services-build</module>
                                 <module>../wlan-cloud-opensync-controller/opensync-gateway-build</module>
