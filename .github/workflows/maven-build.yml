@@ -3,7 +3,7 @@ name: Java Maven CI - TIP WLAN Cloud Master
 on: 
   push:
     branches:
-      - master
+      - build-test
       - 'release/**'
     tags:
       - '*'
